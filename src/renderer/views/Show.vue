@@ -1,14 +1,15 @@
 <template>
-    <div style="height:100%;" id="wrapper">
+    <div style="height:100%;" id="wrapper" class="console">
         <el-containter style="height:100%;" class="main-container">
             <el-header :height="'42px'">
                 <navi-bar></navi-bar>
             </el-header>
             <el-main>
+                <div style="height:42px"></div>
                 <v-console/>
             </el-main>
         </el-containter>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -26,12 +27,26 @@ export default {
     }
 };
 </script>
-<style>
+<style scoped>
     .main-container .el-header {
         padding: 0;
+        position: absolute;
+        width: 100%;
+    }
+
+    .clearfix {
+        clear: both;
     }
 
     #wrapper {
         height: 100%;
+        background: rgb(47, 52, 61);
+    }
+
+    .console {
+        overflow: scroll;
+    }
+    .console::-webkit-scrollbar {
+        display: none;
     }
 </style>

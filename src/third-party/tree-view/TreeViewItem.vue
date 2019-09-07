@@ -43,10 +43,10 @@
         toggleOpen:function(){
             this.open = !this.open;
         },
-            isObject: function(value){
+        isObject: function(value){
             return value.type === 'object';
         },
-            isArray: function(value){
+        isArray: function(value){
             return value.type === 'array';
         },
         isValue: function(value){
@@ -73,8 +73,8 @@
 <style>
 
 .tree-view-item {
-  font-family: monaco, monospace;
-  font-size: 14px;
+  font-family: "Fira Code",  Menlo, Consolas, "Courier New", Courier, "Avenir", Helvetica, Arial, sans-serif;
+  font-size: 16px;
   margin-left: 2em;
   color: #abb2bf;
 }
@@ -90,7 +90,6 @@
 }
 
 .tree-view-item-key {
-  font-weight: bold;
   color: #98c379;
 }
 

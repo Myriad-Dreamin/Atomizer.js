@@ -30,7 +30,7 @@ export default {
 <style scoped>
     @import "../assets/atom-one-dark.css";
     code {
-        font-family: "Fira Code", "Avenir", Helvetica, Arial, sans-serif;
+        font-family: "Fira Code",  Menlo, Consolas, "Courier New", Courier, "Avenir", Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         line-height: 23px;

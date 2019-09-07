@@ -34,11 +34,11 @@
             }
         },
 
-            // Since we use lodash, the _.map method will work on
+        // Since we use lodash, the _.map method will work on
         // both Objects and Arrays, returning either the Key as
         // a string or the Index as an integer
-            generateChildrenFromCollection: function(collection){
-                return _.map(collection, (value, keyOrIndex)=>{
+        generateChildrenFromCollection: function(collection){
+            return _.map(collection, (value, keyOrIndex)=>{
                 if (this.isObject(value)) {
                 return this.transformObject(value, keyOrIndex);
                 }
@@ -55,8 +55,8 @@
         transformArray: function(arrayToTransform, keyForArray){
             return {
                 key: keyForArray,
-            type: "array",
-            children: this.generateChildrenFromCollection(arrayToTransform)
+                type: "array",
+                children: this.generateChildrenFromCollection(arrayToTransform)
             }
         },
 
@@ -65,8 +65,8 @@
             return {
                 key: keyForObject,
                 type: "object",
-            isRoot: isRootObject,
-            children: this.generateChildrenFromCollection(objectToTransform)
+                isRoot: isRootObject,
+                children: this.generateChildrenFromCollection(objectToTransform)
             }
         },
 
@@ -115,7 +115,7 @@
             // Strings or Integers should not be attempted to be split, so we generate
             // a new object with the string/number as the value
             if (this.isValue(this.data)) {
-            return this.transformValue(this.data, this.allOptions.rootObjectKey);
+                return this.transformValue(this.data, this.allOptions.rootObjectKey);
             }
 
             // If it's an object or an array, transform as an object

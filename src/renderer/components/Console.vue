@@ -18,14 +18,16 @@
         </div>
       </div>
     </div>
-    <el-input placeholder="请输入内容" v-model="input_load" @keyup.enter.native="consoleDumpIt" />
+    <el-input class="input" placeholder="请输入内容" v-model="input_load" @keyup.enter.native="consoleDumpIt" />
+    <div class="clear"></div>
   </div>
 </template>
 
 
 <script>
 import loader from './Markdown.vue';
-import { stringify } from 'querystring';
+import elliptic from '@module/crypto/elliptic.js';
+import _ from 'lodash';
 
 export default {
     name: 'Console',
@@ -83,6 +85,8 @@ export default {
                 break;
                 case "object":
                 case "array":
+                output.value = _.toPlainObject(output.value);
+
                 output.formatted = "use value...";// JSON.stringify(value);
                 break;
                 case "error":
@@ -106,15 +110,7 @@ export default {
         window.console.log(this.input_list.length);
         window.console.log(this.input_list);
 
-        window.db = {
-            set(key, value) {
-                window.db[key] = value;
-                return true;
-            },
-            get(key) {
-                return window.db[key];
-            }
-        }
+        window.elliptic = elliptic;
 
         // this.axios.get('https://myriaddreamin.com:10777/api/musical').then((response) =>  {
         //     this.recommend_list = response.data;
@@ -123,7 +119,7 @@ export default {
 
     /*
     a= {'1': 1, '2':[2,3]}
-    
+    elliptic.secp256k1.generate()
     */
     data () {
         return {
@@ -145,6 +141,11 @@ div[class*="typeclass-"] > * {
   padding: 0.5em;
 }
 
+div[class*="typeclass-"] > *, code {
+    font-family: "Fira Code",  Menlo, Consolas, "Courier New", Courier, "Avenir", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
 .typeclass-error > * {
   color: #e06c75;
 }
@@ -161,11 +162,21 @@ div[class*="typeclass-"] > * {
     color: #56b6c2;
 }
 
+.typeclass-string > * {
+    color: #98c379;
+}
+
 .mbox {
   height: 100%;
   width: 0;
 }
 .console_dump {
-  background: rgb(40, 44, 52);
+  background: rgb(47, 52, 61);
+}
+
+.input.el-input .el-input__inner {
+    background:#21252B;
+    color: #bbbbbb;
+    font-family: "Fira Code",  Menlo, Consolas, "Courier New", Courier, "Avenir", Helvetica, Arial, sans-serif;
 }
 </style>
