@@ -151,6 +151,7 @@ let rendererConfig = {
      '@components': path.join(__dirname, '../src/renderer/components'),
      '@third-party': path.join(__dirname, '../src/third-party'),
      '@module': path.join(__dirname, '../src/module'),
+     '@net-grpc': path.join(__dirname, '../src/grpc'),
      
       'vue$': 'vue/dist/vue.esm.js'
     },

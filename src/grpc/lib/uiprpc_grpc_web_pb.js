@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * @fileoverview gRPC-Web generated client stub for uiprpc
  * @enhanceable
@@ -12,7 +13,7 @@ const grpc = {};
 grpc.web = require('grpc-web');
 
 
-var base_pb = require('./base_pb.js')
+var base_pb = require('./base_pb.js');
 const proto = {};
 proto.uiprpc = require('./uiprpc_pb.js');
 
@@ -26,30 +27,30 @@ proto.uiprpc = require('./uiprpc_pb.js');
  */
 proto.uiprpc.VESClient =
     function(hostname, credentials, options) {
-  if (!options) options = {};
-  options['format'] = 'text';
+        if (!options) options = {};
+        options['format'] = 'text';
 
-  /**
+        /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
    */
-  this.client_ = new grpc.web.GrpcWebClientBase(options);
+        this.client_ = new grpc.web.GrpcWebClientBase(options);
 
-  /**
+        /**
    * @private @const {string} The hostname
    */
-  this.hostname_ = hostname;
+        this.hostname_ = hostname;
 
-  /**
+        /**
    * @private @const {?Object} The credentials to be used to connect
    *    to the server
    */
-  this.credentials_ = credentials;
+        this.credentials_ = credentials;
 
-  /**
+        /**
    * @private @const {?Object} Options for the client
    */
-  this.options_ = options;
-};
+        this.options_ = options;
+    };
 
 
 /**
@@ -62,30 +63,30 @@ proto.uiprpc.VESClient =
  */
 proto.uiprpc.VESPromiseClient =
     function(hostname, credentials, options) {
-  if (!options) options = {};
-  options['format'] = 'text';
+        if (!options) options = {};
+        options['format'] = 'text';
 
-  /**
+        /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
    */
-  this.client_ = new grpc.web.GrpcWebClientBase(options);
+        this.client_ = new grpc.web.GrpcWebClientBase(options);
 
-  /**
+        /**
    * @private @const {string} The hostname
    */
-  this.hostname_ = hostname;
+        this.hostname_ = hostname;
 
-  /**
+        /**
    * @private @const {?Object} The credentials to be used to connect
    *    to the server
    */
-  this.credentials_ = credentials;
+        this.credentials_ = credentials;
 
-  /**
+        /**
    * @private @const {?Object} Options for the client
    */
-  this.options_ = options;
-};
+        this.options_ = options;
+    };
 
 
 /**
@@ -95,15 +96,15 @@ proto.uiprpc.VESPromiseClient =
  *   !proto.uiprpc.UserRegisterReply>}
  */
 const methodDescriptor_VES_UserRegister = new grpc.web.MethodDescriptor(
-  '/uiprpc.VES/UserRegister',
-  grpc.web.MethodType.UNARY,
-  proto.uiprpc.UserRegisterRequest,
-  proto.uiprpc.UserRegisterReply,
-  /** @param {!proto.uiprpc.UserRegisterRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.UserRegisterReply.deserializeBinary
+    '/uiprpc.VES/UserRegister',
+    grpc.web.MethodType.UNARY,
+    proto.uiprpc.UserRegisterRequest,
+    proto.uiprpc.UserRegisterReply,
+    /** @param {!proto.uiprpc.UserRegisterRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.UserRegisterReply.deserializeBinary
 );
 
 
@@ -114,12 +115,12 @@ const methodDescriptor_VES_UserRegister = new grpc.web.MethodDescriptor(
  *   !proto.uiprpc.UserRegisterReply>}
  */
 const methodInfo_VES_UserRegister = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.uiprpc.UserRegisterReply,
-  /** @param {!proto.uiprpc.UserRegisterRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.UserRegisterReply.deserializeBinary
+    proto.uiprpc.UserRegisterReply,
+    /** @param {!proto.uiprpc.UserRegisterRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.UserRegisterReply.deserializeBinary
 );
 
 
@@ -135,13 +136,13 @@ const methodInfo_VES_UserRegister = new grpc.web.AbstractClientBase.MethodInfo(
  */
 proto.uiprpc.VESClient.prototype.userRegister =
     function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
+        return this.client_.rpcCall(this.hostname_ +
       '/uiprpc.VES/UserRegister',
-      request,
-      metadata || {},
-      methodDescriptor_VES_UserRegister,
-      callback);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_UserRegister,
+        callback);
+    };
 
 
 /**
@@ -154,12 +155,12 @@ proto.uiprpc.VESClient.prototype.userRegister =
  */
 proto.uiprpc.VESPromiseClient.prototype.userRegister =
     function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
+        return this.client_.unaryCall(this.hostname_ +
       '/uiprpc.VES/UserRegister',
-      request,
-      metadata || {},
-      methodDescriptor_VES_UserRegister);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_UserRegister);
+    };
 
 
 /**
@@ -169,15 +170,15 @@ proto.uiprpc.VESPromiseClient.prototype.userRegister =
  *   !proto.uiprpc.SessionStartReply>}
  */
 const methodDescriptor_VES_SessionStart = new grpc.web.MethodDescriptor(
-  '/uiprpc.VES/SessionStart',
-  grpc.web.MethodType.UNARY,
-  proto.uiprpc.SessionStartRequest,
-  proto.uiprpc.SessionStartReply,
-  /** @param {!proto.uiprpc.SessionStartRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.SessionStartReply.deserializeBinary
+    '/uiprpc.VES/SessionStart',
+    grpc.web.MethodType.UNARY,
+    proto.uiprpc.SessionStartRequest,
+    proto.uiprpc.SessionStartReply,
+    /** @param {!proto.uiprpc.SessionStartRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.SessionStartReply.deserializeBinary
 );
 
 
@@ -188,12 +189,12 @@ const methodDescriptor_VES_SessionStart = new grpc.web.MethodDescriptor(
  *   !proto.uiprpc.SessionStartReply>}
  */
 const methodInfo_VES_SessionStart = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.uiprpc.SessionStartReply,
-  /** @param {!proto.uiprpc.SessionStartRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.SessionStartReply.deserializeBinary
+    proto.uiprpc.SessionStartReply,
+    /** @param {!proto.uiprpc.SessionStartRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.SessionStartReply.deserializeBinary
 );
 
 
@@ -209,13 +210,13 @@ const methodInfo_VES_SessionStart = new grpc.web.AbstractClientBase.MethodInfo(
  */
 proto.uiprpc.VESClient.prototype.sessionStart =
     function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
+        return this.client_.rpcCall(this.hostname_ +
       '/uiprpc.VES/SessionStart',
-      request,
-      metadata || {},
-      methodDescriptor_VES_SessionStart,
-      callback);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_SessionStart,
+        callback);
+    };
 
 
 /**
@@ -228,12 +229,12 @@ proto.uiprpc.VESClient.prototype.sessionStart =
  */
 proto.uiprpc.VESPromiseClient.prototype.sessionStart =
     function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
+        return this.client_.unaryCall(this.hostname_ +
       '/uiprpc.VES/SessionStart',
-      request,
-      metadata || {},
-      methodDescriptor_VES_SessionStart);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_SessionStart);
+    };
 
 
 /**
@@ -243,15 +244,15 @@ proto.uiprpc.VESPromiseClient.prototype.sessionStart =
  *   !proto.uiprpc.SessionAckForInitReply>}
  */
 const methodDescriptor_VES_SessionAckForInit = new grpc.web.MethodDescriptor(
-  '/uiprpc.VES/SessionAckForInit',
-  grpc.web.MethodType.UNARY,
-  proto.uiprpc.SessionAckForInitRequest,
-  proto.uiprpc.SessionAckForInitReply,
-  /** @param {!proto.uiprpc.SessionAckForInitRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.SessionAckForInitReply.deserializeBinary
+    '/uiprpc.VES/SessionAckForInit',
+    grpc.web.MethodType.UNARY,
+    proto.uiprpc.SessionAckForInitRequest,
+    proto.uiprpc.SessionAckForInitReply,
+    /** @param {!proto.uiprpc.SessionAckForInitRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.SessionAckForInitReply.deserializeBinary
 );
 
 
@@ -262,12 +263,12 @@ const methodDescriptor_VES_SessionAckForInit = new grpc.web.MethodDescriptor(
  *   !proto.uiprpc.SessionAckForInitReply>}
  */
 const methodInfo_VES_SessionAckForInit = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.uiprpc.SessionAckForInitReply,
-  /** @param {!proto.uiprpc.SessionAckForInitRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.SessionAckForInitReply.deserializeBinary
+    proto.uiprpc.SessionAckForInitReply,
+    /** @param {!proto.uiprpc.SessionAckForInitRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.SessionAckForInitReply.deserializeBinary
 );
 
 
@@ -283,13 +284,13 @@ const methodInfo_VES_SessionAckForInit = new grpc.web.AbstractClientBase.MethodI
  */
 proto.uiprpc.VESClient.prototype.sessionAckForInit =
     function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
+        return this.client_.rpcCall(this.hostname_ +
       '/uiprpc.VES/SessionAckForInit',
-      request,
-      metadata || {},
-      methodDescriptor_VES_SessionAckForInit,
-      callback);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_SessionAckForInit,
+        callback);
+    };
 
 
 /**
@@ -302,12 +303,12 @@ proto.uiprpc.VESClient.prototype.sessionAckForInit =
  */
 proto.uiprpc.VESPromiseClient.prototype.sessionAckForInit =
     function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
+        return this.client_.unaryCall(this.hostname_ +
       '/uiprpc.VES/SessionAckForInit',
-      request,
-      metadata || {},
-      methodDescriptor_VES_SessionAckForInit);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_SessionAckForInit);
+    };
 
 
 /**
@@ -317,15 +318,15 @@ proto.uiprpc.VESPromiseClient.prototype.sessionAckForInit =
  *   !proto.uiprpc.SessionRequireTransactReply>}
  */
 const methodDescriptor_VES_SessionRequireTransact = new grpc.web.MethodDescriptor(
-  '/uiprpc.VES/SessionRequireTransact',
-  grpc.web.MethodType.UNARY,
-  proto.uiprpc.SessionRequireTransactRequest,
-  proto.uiprpc.SessionRequireTransactReply,
-  /** @param {!proto.uiprpc.SessionRequireTransactRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.SessionRequireTransactReply.deserializeBinary
+    '/uiprpc.VES/SessionRequireTransact',
+    grpc.web.MethodType.UNARY,
+    proto.uiprpc.SessionRequireTransactRequest,
+    proto.uiprpc.SessionRequireTransactReply,
+    /** @param {!proto.uiprpc.SessionRequireTransactRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.SessionRequireTransactReply.deserializeBinary
 );
 
 
@@ -336,12 +337,12 @@ const methodDescriptor_VES_SessionRequireTransact = new grpc.web.MethodDescripto
  *   !proto.uiprpc.SessionRequireTransactReply>}
  */
 const methodInfo_VES_SessionRequireTransact = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.uiprpc.SessionRequireTransactReply,
-  /** @param {!proto.uiprpc.SessionRequireTransactRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.SessionRequireTransactReply.deserializeBinary
+    proto.uiprpc.SessionRequireTransactReply,
+    /** @param {!proto.uiprpc.SessionRequireTransactRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.SessionRequireTransactReply.deserializeBinary
 );
 
 
@@ -357,13 +358,13 @@ const methodInfo_VES_SessionRequireTransact = new grpc.web.AbstractClientBase.Me
  */
 proto.uiprpc.VESClient.prototype.sessionRequireTransact =
     function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
+        return this.client_.rpcCall(this.hostname_ +
       '/uiprpc.VES/SessionRequireTransact',
-      request,
-      metadata || {},
-      methodDescriptor_VES_SessionRequireTransact,
-      callback);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_SessionRequireTransact,
+        callback);
+    };
 
 
 /**
@@ -376,12 +377,12 @@ proto.uiprpc.VESClient.prototype.sessionRequireTransact =
  */
 proto.uiprpc.VESPromiseClient.prototype.sessionRequireTransact =
     function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
+        return this.client_.unaryCall(this.hostname_ +
       '/uiprpc.VES/SessionRequireTransact',
-      request,
-      metadata || {},
-      methodDescriptor_VES_SessionRequireTransact);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_SessionRequireTransact);
+    };
 
 
 /**
@@ -391,15 +392,15 @@ proto.uiprpc.VESPromiseClient.prototype.sessionRequireTransact =
  *   !proto.uiprpc.SessionRequireRawTransactReply>}
  */
 const methodDescriptor_VES_SessionRequireRawTransact = new grpc.web.MethodDescriptor(
-  '/uiprpc.VES/SessionRequireRawTransact',
-  grpc.web.MethodType.UNARY,
-  proto.uiprpc.SessionRequireRawTransactRequest,
-  proto.uiprpc.SessionRequireRawTransactReply,
-  /** @param {!proto.uiprpc.SessionRequireRawTransactRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.SessionRequireRawTransactReply.deserializeBinary
+    '/uiprpc.VES/SessionRequireRawTransact',
+    grpc.web.MethodType.UNARY,
+    proto.uiprpc.SessionRequireRawTransactRequest,
+    proto.uiprpc.SessionRequireRawTransactReply,
+    /** @param {!proto.uiprpc.SessionRequireRawTransactRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.SessionRequireRawTransactReply.deserializeBinary
 );
 
 
@@ -410,12 +411,12 @@ const methodDescriptor_VES_SessionRequireRawTransact = new grpc.web.MethodDescri
  *   !proto.uiprpc.SessionRequireRawTransactReply>}
  */
 const methodInfo_VES_SessionRequireRawTransact = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.uiprpc.SessionRequireRawTransactReply,
-  /** @param {!proto.uiprpc.SessionRequireRawTransactRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.SessionRequireRawTransactReply.deserializeBinary
+    proto.uiprpc.SessionRequireRawTransactReply,
+    /** @param {!proto.uiprpc.SessionRequireRawTransactRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.SessionRequireRawTransactReply.deserializeBinary
 );
 
 
@@ -431,13 +432,13 @@ const methodInfo_VES_SessionRequireRawTransact = new grpc.web.AbstractClientBase
  */
 proto.uiprpc.VESClient.prototype.sessionRequireRawTransact =
     function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
+        return this.client_.rpcCall(this.hostname_ +
       '/uiprpc.VES/SessionRequireRawTransact',
-      request,
-      metadata || {},
-      methodDescriptor_VES_SessionRequireRawTransact,
-      callback);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_SessionRequireRawTransact,
+        callback);
+    };
 
 
 /**
@@ -450,12 +451,12 @@ proto.uiprpc.VESClient.prototype.sessionRequireRawTransact =
  */
 proto.uiprpc.VESPromiseClient.prototype.sessionRequireRawTransact =
     function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
+        return this.client_.unaryCall(this.hostname_ +
       '/uiprpc.VES/SessionRequireRawTransact',
-      request,
-      metadata || {},
-      methodDescriptor_VES_SessionRequireRawTransact);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_SessionRequireRawTransact);
+    };
 
 
 /**
@@ -465,15 +466,15 @@ proto.uiprpc.VESPromiseClient.prototype.sessionRequireRawTransact =
  *   !proto.uiprpc.AttestationReceiveReply>}
  */
 const methodDescriptor_VES_AttestationReceive = new grpc.web.MethodDescriptor(
-  '/uiprpc.VES/AttestationReceive',
-  grpc.web.MethodType.UNARY,
-  proto.uiprpc.AttestationReceiveRequest,
-  proto.uiprpc.AttestationReceiveReply,
-  /** @param {!proto.uiprpc.AttestationReceiveRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.AttestationReceiveReply.deserializeBinary
+    '/uiprpc.VES/AttestationReceive',
+    grpc.web.MethodType.UNARY,
+    proto.uiprpc.AttestationReceiveRequest,
+    proto.uiprpc.AttestationReceiveReply,
+    /** @param {!proto.uiprpc.AttestationReceiveRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.AttestationReceiveReply.deserializeBinary
 );
 
 
@@ -484,12 +485,12 @@ const methodDescriptor_VES_AttestationReceive = new grpc.web.MethodDescriptor(
  *   !proto.uiprpc.AttestationReceiveReply>}
  */
 const methodInfo_VES_AttestationReceive = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.uiprpc.AttestationReceiveReply,
-  /** @param {!proto.uiprpc.AttestationReceiveRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.AttestationReceiveReply.deserializeBinary
+    proto.uiprpc.AttestationReceiveReply,
+    /** @param {!proto.uiprpc.AttestationReceiveRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.AttestationReceiveReply.deserializeBinary
 );
 
 
@@ -505,13 +506,13 @@ const methodInfo_VES_AttestationReceive = new grpc.web.AbstractClientBase.Method
  */
 proto.uiprpc.VESClient.prototype.attestationReceive =
     function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
+        return this.client_.rpcCall(this.hostname_ +
       '/uiprpc.VES/AttestationReceive',
-      request,
-      metadata || {},
-      methodDescriptor_VES_AttestationReceive,
-      callback);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_AttestationReceive,
+        callback);
+    };
 
 
 /**
@@ -524,12 +525,12 @@ proto.uiprpc.VESClient.prototype.attestationReceive =
  */
 proto.uiprpc.VESPromiseClient.prototype.attestationReceive =
     function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
+        return this.client_.unaryCall(this.hostname_ +
       '/uiprpc.VES/AttestationReceive',
-      request,
-      metadata || {},
-      methodDescriptor_VES_AttestationReceive);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_AttestationReceive);
+    };
 
 
 /**
@@ -539,15 +540,15 @@ proto.uiprpc.VESPromiseClient.prototype.attestationReceive =
  *   !proto.uiprpc.MerkleProofReceiveReply>}
  */
 const methodDescriptor_VES_MerkleProofReceive = new grpc.web.MethodDescriptor(
-  '/uiprpc.VES/MerkleProofReceive',
-  grpc.web.MethodType.UNARY,
-  proto.uiprpc.MerkleProofReceiveRequest,
-  proto.uiprpc.MerkleProofReceiveReply,
-  /** @param {!proto.uiprpc.MerkleProofReceiveRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.MerkleProofReceiveReply.deserializeBinary
+    '/uiprpc.VES/MerkleProofReceive',
+    grpc.web.MethodType.UNARY,
+    proto.uiprpc.MerkleProofReceiveRequest,
+    proto.uiprpc.MerkleProofReceiveReply,
+    /** @param {!proto.uiprpc.MerkleProofReceiveRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.MerkleProofReceiveReply.deserializeBinary
 );
 
 
@@ -558,12 +559,12 @@ const methodDescriptor_VES_MerkleProofReceive = new grpc.web.MethodDescriptor(
  *   !proto.uiprpc.MerkleProofReceiveReply>}
  */
 const methodInfo_VES_MerkleProofReceive = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.uiprpc.MerkleProofReceiveReply,
-  /** @param {!proto.uiprpc.MerkleProofReceiveRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.MerkleProofReceiveReply.deserializeBinary
+    proto.uiprpc.MerkleProofReceiveReply,
+    /** @param {!proto.uiprpc.MerkleProofReceiveRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.MerkleProofReceiveReply.deserializeBinary
 );
 
 
@@ -579,13 +580,13 @@ const methodInfo_VES_MerkleProofReceive = new grpc.web.AbstractClientBase.Method
  */
 proto.uiprpc.VESClient.prototype.merkleProofReceive =
     function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
+        return this.client_.rpcCall(this.hostname_ +
       '/uiprpc.VES/MerkleProofReceive',
-      request,
-      metadata || {},
-      methodDescriptor_VES_MerkleProofReceive,
-      callback);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_MerkleProofReceive,
+        callback);
+    };
 
 
 /**
@@ -598,12 +599,12 @@ proto.uiprpc.VESClient.prototype.merkleProofReceive =
  */
 proto.uiprpc.VESPromiseClient.prototype.merkleProofReceive =
     function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
+        return this.client_.unaryCall(this.hostname_ +
       '/uiprpc.VES/MerkleProofReceive',
-      request,
-      metadata || {},
-      methodDescriptor_VES_MerkleProofReceive);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_MerkleProofReceive);
+    };
 
 
 /**
@@ -613,15 +614,15 @@ proto.uiprpc.VESPromiseClient.prototype.merkleProofReceive =
  *   !proto.uiprpc.ShortenMerkleProofReceiveReply>}
  */
 const methodDescriptor_VES_ShrotenMerkleProofReceive = new grpc.web.MethodDescriptor(
-  '/uiprpc.VES/ShrotenMerkleProofReceive',
-  grpc.web.MethodType.UNARY,
-  proto.uiprpc.ShortenMerkleProofReceiveRequest,
-  proto.uiprpc.ShortenMerkleProofReceiveReply,
-  /** @param {!proto.uiprpc.ShortenMerkleProofReceiveRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.ShortenMerkleProofReceiveReply.deserializeBinary
+    '/uiprpc.VES/ShrotenMerkleProofReceive',
+    grpc.web.MethodType.UNARY,
+    proto.uiprpc.ShortenMerkleProofReceiveRequest,
+    proto.uiprpc.ShortenMerkleProofReceiveReply,
+    /** @param {!proto.uiprpc.ShortenMerkleProofReceiveRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.ShortenMerkleProofReceiveReply.deserializeBinary
 );
 
 
@@ -632,12 +633,12 @@ const methodDescriptor_VES_ShrotenMerkleProofReceive = new grpc.web.MethodDescri
  *   !proto.uiprpc.ShortenMerkleProofReceiveReply>}
  */
 const methodInfo_VES_ShrotenMerkleProofReceive = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.uiprpc.ShortenMerkleProofReceiveReply,
-  /** @param {!proto.uiprpc.ShortenMerkleProofReceiveRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.ShortenMerkleProofReceiveReply.deserializeBinary
+    proto.uiprpc.ShortenMerkleProofReceiveReply,
+    /** @param {!proto.uiprpc.ShortenMerkleProofReceiveRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.ShortenMerkleProofReceiveReply.deserializeBinary
 );
 
 
@@ -653,13 +654,13 @@ const methodInfo_VES_ShrotenMerkleProofReceive = new grpc.web.AbstractClientBase
  */
 proto.uiprpc.VESClient.prototype.shrotenMerkleProofReceive =
     function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
+        return this.client_.rpcCall(this.hostname_ +
       '/uiprpc.VES/ShrotenMerkleProofReceive',
-      request,
-      metadata || {},
-      methodDescriptor_VES_ShrotenMerkleProofReceive,
-      callback);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_ShrotenMerkleProofReceive,
+        callback);
+    };
 
 
 /**
@@ -672,12 +673,12 @@ proto.uiprpc.VESClient.prototype.shrotenMerkleProofReceive =
  */
 proto.uiprpc.VESPromiseClient.prototype.shrotenMerkleProofReceive =
     function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
+        return this.client_.unaryCall(this.hostname_ +
       '/uiprpc.VES/ShrotenMerkleProofReceive',
-      request,
-      metadata || {},
-      methodDescriptor_VES_ShrotenMerkleProofReceive);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_ShrotenMerkleProofReceive);
+    };
 
 
 /**
@@ -687,15 +688,15 @@ proto.uiprpc.VESPromiseClient.prototype.shrotenMerkleProofReceive =
  *   !proto.uiprpc.AttestationReceiveReply>}
  */
 const methodDescriptor_VES_InformAttestation = new grpc.web.MethodDescriptor(
-  '/uiprpc.VES/InformAttestation',
-  grpc.web.MethodType.UNARY,
-  proto.uiprpc.AttestationReceiveRequest,
-  proto.uiprpc.AttestationReceiveReply,
-  /** @param {!proto.uiprpc.AttestationReceiveRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.AttestationReceiveReply.deserializeBinary
+    '/uiprpc.VES/InformAttestation',
+    grpc.web.MethodType.UNARY,
+    proto.uiprpc.AttestationReceiveRequest,
+    proto.uiprpc.AttestationReceiveReply,
+    /** @param {!proto.uiprpc.AttestationReceiveRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.AttestationReceiveReply.deserializeBinary
 );
 
 
@@ -706,12 +707,12 @@ const methodDescriptor_VES_InformAttestation = new grpc.web.MethodDescriptor(
  *   !proto.uiprpc.AttestationReceiveReply>}
  */
 const methodInfo_VES_InformAttestation = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.uiprpc.AttestationReceiveReply,
-  /** @param {!proto.uiprpc.AttestationReceiveRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.AttestationReceiveReply.deserializeBinary
+    proto.uiprpc.AttestationReceiveReply,
+    /** @param {!proto.uiprpc.AttestationReceiveRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.AttestationReceiveReply.deserializeBinary
 );
 
 
@@ -727,13 +728,13 @@ const methodInfo_VES_InformAttestation = new grpc.web.AbstractClientBase.MethodI
  */
 proto.uiprpc.VESClient.prototype.informAttestation =
     function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
+        return this.client_.rpcCall(this.hostname_ +
       '/uiprpc.VES/InformAttestation',
-      request,
-      metadata || {},
-      methodDescriptor_VES_InformAttestation,
-      callback);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_InformAttestation,
+        callback);
+    };
 
 
 /**
@@ -746,12 +747,12 @@ proto.uiprpc.VESClient.prototype.informAttestation =
  */
 proto.uiprpc.VESPromiseClient.prototype.informAttestation =
     function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
+        return this.client_.unaryCall(this.hostname_ +
       '/uiprpc.VES/InformAttestation',
-      request,
-      metadata || {},
-      methodDescriptor_VES_InformAttestation);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_InformAttestation);
+    };
 
 
 /**
@@ -761,15 +762,15 @@ proto.uiprpc.VESPromiseClient.prototype.informAttestation =
  *   !proto.uiprpc.MerkleProofReceiveReply>}
  */
 const methodDescriptor_VES_InformMerkleProof = new grpc.web.MethodDescriptor(
-  '/uiprpc.VES/InformMerkleProof',
-  grpc.web.MethodType.UNARY,
-  proto.uiprpc.MerkleProofReceiveRequest,
-  proto.uiprpc.MerkleProofReceiveReply,
-  /** @param {!proto.uiprpc.MerkleProofReceiveRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.MerkleProofReceiveReply.deserializeBinary
+    '/uiprpc.VES/InformMerkleProof',
+    grpc.web.MethodType.UNARY,
+    proto.uiprpc.MerkleProofReceiveRequest,
+    proto.uiprpc.MerkleProofReceiveReply,
+    /** @param {!proto.uiprpc.MerkleProofReceiveRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.MerkleProofReceiveReply.deserializeBinary
 );
 
 
@@ -780,12 +781,12 @@ const methodDescriptor_VES_InformMerkleProof = new grpc.web.MethodDescriptor(
  *   !proto.uiprpc.MerkleProofReceiveReply>}
  */
 const methodInfo_VES_InformMerkleProof = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.uiprpc.MerkleProofReceiveReply,
-  /** @param {!proto.uiprpc.MerkleProofReceiveRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.MerkleProofReceiveReply.deserializeBinary
+    proto.uiprpc.MerkleProofReceiveReply,
+    /** @param {!proto.uiprpc.MerkleProofReceiveRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.MerkleProofReceiveReply.deserializeBinary
 );
 
 
@@ -801,13 +802,13 @@ const methodInfo_VES_InformMerkleProof = new grpc.web.AbstractClientBase.MethodI
  */
 proto.uiprpc.VESClient.prototype.informMerkleProof =
     function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
+        return this.client_.rpcCall(this.hostname_ +
       '/uiprpc.VES/InformMerkleProof',
-      request,
-      metadata || {},
-      methodDescriptor_VES_InformMerkleProof,
-      callback);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_InformMerkleProof,
+        callback);
+    };
 
 
 /**
@@ -820,12 +821,12 @@ proto.uiprpc.VESClient.prototype.informMerkleProof =
  */
 proto.uiprpc.VESPromiseClient.prototype.informMerkleProof =
     function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
+        return this.client_.unaryCall(this.hostname_ +
       '/uiprpc.VES/InformMerkleProof',
-      request,
-      metadata || {},
-      methodDescriptor_VES_InformMerkleProof);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_InformMerkleProof);
+    };
 
 
 /**
@@ -835,15 +836,15 @@ proto.uiprpc.VESPromiseClient.prototype.informMerkleProof =
  *   !proto.uiprpc.ShortenMerkleProofReceiveReply>}
  */
 const methodDescriptor_VES_InformShortenMerkleProof = new grpc.web.MethodDescriptor(
-  '/uiprpc.VES/InformShortenMerkleProof',
-  grpc.web.MethodType.UNARY,
-  proto.uiprpc.ShortenMerkleProofReceiveRequest,
-  proto.uiprpc.ShortenMerkleProofReceiveReply,
-  /** @param {!proto.uiprpc.ShortenMerkleProofReceiveRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.ShortenMerkleProofReceiveReply.deserializeBinary
+    '/uiprpc.VES/InformShortenMerkleProof',
+    grpc.web.MethodType.UNARY,
+    proto.uiprpc.ShortenMerkleProofReceiveRequest,
+    proto.uiprpc.ShortenMerkleProofReceiveReply,
+    /** @param {!proto.uiprpc.ShortenMerkleProofReceiveRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.ShortenMerkleProofReceiveReply.deserializeBinary
 );
 
 
@@ -854,12 +855,12 @@ const methodDescriptor_VES_InformShortenMerkleProof = new grpc.web.MethodDescrip
  *   !proto.uiprpc.ShortenMerkleProofReceiveReply>}
  */
 const methodInfo_VES_InformShortenMerkleProof = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.uiprpc.ShortenMerkleProofReceiveReply,
-  /** @param {!proto.uiprpc.ShortenMerkleProofReceiveRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.ShortenMerkleProofReceiveReply.deserializeBinary
+    proto.uiprpc.ShortenMerkleProofReceiveReply,
+    /** @param {!proto.uiprpc.ShortenMerkleProofReceiveRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.ShortenMerkleProofReceiveReply.deserializeBinary
 );
 
 
@@ -875,13 +876,13 @@ const methodInfo_VES_InformShortenMerkleProof = new grpc.web.AbstractClientBase.
  */
 proto.uiprpc.VESClient.prototype.informShortenMerkleProof =
     function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
+        return this.client_.rpcCall(this.hostname_ +
       '/uiprpc.VES/InformShortenMerkleProof',
-      request,
-      metadata || {},
-      methodDescriptor_VES_InformShortenMerkleProof,
-      callback);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_InformShortenMerkleProof,
+        callback);
+    };
 
 
 /**
@@ -894,12 +895,12 @@ proto.uiprpc.VESClient.prototype.informShortenMerkleProof =
  */
 proto.uiprpc.VESPromiseClient.prototype.informShortenMerkleProof =
     function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
+        return this.client_.unaryCall(this.hostname_ +
       '/uiprpc.VES/InformShortenMerkleProof',
-      request,
-      metadata || {},
-      methodDescriptor_VES_InformShortenMerkleProof);
-};
+        request,
+        metadata || {},
+        methodDescriptor_VES_InformShortenMerkleProof);
+    };
 
 
 /**
@@ -912,30 +913,30 @@ proto.uiprpc.VESPromiseClient.prototype.informShortenMerkleProof =
  */
 proto.uiprpc.CenteredVESClient =
     function(hostname, credentials, options) {
-  if (!options) options = {};
-  options['format'] = 'text';
+        if (!options) options = {};
+        options['format'] = 'text';
 
-  /**
+        /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
    */
-  this.client_ = new grpc.web.GrpcWebClientBase(options);
+        this.client_ = new grpc.web.GrpcWebClientBase(options);
 
-  /**
+        /**
    * @private @const {string} The hostname
    */
-  this.hostname_ = hostname;
+        this.hostname_ = hostname;
 
-  /**
+        /**
    * @private @const {?Object} The credentials to be used to connect
    *    to the server
    */
-  this.credentials_ = credentials;
+        this.credentials_ = credentials;
 
-  /**
+        /**
    * @private @const {?Object} Options for the client
    */
-  this.options_ = options;
-};
+        this.options_ = options;
+    };
 
 
 /**
@@ -948,30 +949,30 @@ proto.uiprpc.CenteredVESClient =
  */
 proto.uiprpc.CenteredVESPromiseClient =
     function(hostname, credentials, options) {
-  if (!options) options = {};
-  options['format'] = 'text';
+        if (!options) options = {};
+        options['format'] = 'text';
 
-  /**
+        /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
    */
-  this.client_ = new grpc.web.GrpcWebClientBase(options);
+        this.client_ = new grpc.web.GrpcWebClientBase(options);
 
-  /**
+        /**
    * @private @const {string} The hostname
    */
-  this.hostname_ = hostname;
+        this.hostname_ = hostname;
 
-  /**
+        /**
    * @private @const {?Object} The credentials to be used to connect
    *    to the server
    */
-  this.credentials_ = credentials;
+        this.credentials_ = credentials;
 
-  /**
+        /**
    * @private @const {?Object} Options for the client
    */
-  this.options_ = options;
-};
+        this.options_ = options;
+    };
 
 
 /**
@@ -981,15 +982,15 @@ proto.uiprpc.CenteredVESPromiseClient =
  *   !proto.uiprpc.InternalRequestComingReply>}
  */
 const methodDescriptor_CenteredVES_InternalRequestComing = new grpc.web.MethodDescriptor(
-  '/uiprpc.CenteredVES/InternalRequestComing',
-  grpc.web.MethodType.UNARY,
-  proto.uiprpc.InternalRequestComingRequest,
-  proto.uiprpc.InternalRequestComingReply,
-  /** @param {!proto.uiprpc.InternalRequestComingRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.InternalRequestComingReply.deserializeBinary
+    '/uiprpc.CenteredVES/InternalRequestComing',
+    grpc.web.MethodType.UNARY,
+    proto.uiprpc.InternalRequestComingRequest,
+    proto.uiprpc.InternalRequestComingReply,
+    /** @param {!proto.uiprpc.InternalRequestComingRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.InternalRequestComingReply.deserializeBinary
 );
 
 
@@ -1000,12 +1001,12 @@ const methodDescriptor_CenteredVES_InternalRequestComing = new grpc.web.MethodDe
  *   !proto.uiprpc.InternalRequestComingReply>}
  */
 const methodInfo_CenteredVES_InternalRequestComing = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.uiprpc.InternalRequestComingReply,
-  /** @param {!proto.uiprpc.InternalRequestComingRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.InternalRequestComingReply.deserializeBinary
+    proto.uiprpc.InternalRequestComingReply,
+    /** @param {!proto.uiprpc.InternalRequestComingRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.InternalRequestComingReply.deserializeBinary
 );
 
 
@@ -1021,13 +1022,13 @@ const methodInfo_CenteredVES_InternalRequestComing = new grpc.web.AbstractClient
  */
 proto.uiprpc.CenteredVESClient.prototype.internalRequestComing =
     function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
+        return this.client_.rpcCall(this.hostname_ +
       '/uiprpc.CenteredVES/InternalRequestComing',
-      request,
-      metadata || {},
-      methodDescriptor_CenteredVES_InternalRequestComing,
-      callback);
-};
+        request,
+        metadata || {},
+        methodDescriptor_CenteredVES_InternalRequestComing,
+        callback);
+    };
 
 
 /**
@@ -1040,12 +1041,12 @@ proto.uiprpc.CenteredVESClient.prototype.internalRequestComing =
  */
 proto.uiprpc.CenteredVESPromiseClient.prototype.internalRequestComing =
     function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
+        return this.client_.unaryCall(this.hostname_ +
       '/uiprpc.CenteredVES/InternalRequestComing',
-      request,
-      metadata || {},
-      methodDescriptor_CenteredVES_InternalRequestComing);
-};
+        request,
+        metadata || {},
+        methodDescriptor_CenteredVES_InternalRequestComing);
+    };
 
 
 /**
@@ -1055,15 +1056,15 @@ proto.uiprpc.CenteredVESPromiseClient.prototype.internalRequestComing =
  *   !proto.uiprpc.InternalRequestComingReply>}
  */
 const methodDescriptor_CenteredVES_InternalAttestationSending = new grpc.web.MethodDescriptor(
-  '/uiprpc.CenteredVES/InternalAttestationSending',
-  grpc.web.MethodType.UNARY,
-  proto.uiprpc.InternalRequestComingRequest,
-  proto.uiprpc.InternalRequestComingReply,
-  /** @param {!proto.uiprpc.InternalRequestComingRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.InternalRequestComingReply.deserializeBinary
+    '/uiprpc.CenteredVES/InternalAttestationSending',
+    grpc.web.MethodType.UNARY,
+    proto.uiprpc.InternalRequestComingRequest,
+    proto.uiprpc.InternalRequestComingReply,
+    /** @param {!proto.uiprpc.InternalRequestComingRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.InternalRequestComingReply.deserializeBinary
 );
 
 
@@ -1074,12 +1075,12 @@ const methodDescriptor_CenteredVES_InternalAttestationSending = new grpc.web.Met
  *   !proto.uiprpc.InternalRequestComingReply>}
  */
 const methodInfo_CenteredVES_InternalAttestationSending = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.uiprpc.InternalRequestComingReply,
-  /** @param {!proto.uiprpc.InternalRequestComingRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.InternalRequestComingReply.deserializeBinary
+    proto.uiprpc.InternalRequestComingReply,
+    /** @param {!proto.uiprpc.InternalRequestComingRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.InternalRequestComingReply.deserializeBinary
 );
 
 
@@ -1095,13 +1096,13 @@ const methodInfo_CenteredVES_InternalAttestationSending = new grpc.web.AbstractC
  */
 proto.uiprpc.CenteredVESClient.prototype.internalAttestationSending =
     function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
+        return this.client_.rpcCall(this.hostname_ +
       '/uiprpc.CenteredVES/InternalAttestationSending',
-      request,
-      metadata || {},
-      methodDescriptor_CenteredVES_InternalAttestationSending,
-      callback);
-};
+        request,
+        metadata || {},
+        methodDescriptor_CenteredVES_InternalAttestationSending,
+        callback);
+    };
 
 
 /**
@@ -1114,12 +1115,12 @@ proto.uiprpc.CenteredVESClient.prototype.internalAttestationSending =
  */
 proto.uiprpc.CenteredVESPromiseClient.prototype.internalAttestationSending =
     function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
+        return this.client_.unaryCall(this.hostname_ +
       '/uiprpc.CenteredVES/InternalAttestationSending',
-      request,
-      metadata || {},
-      methodDescriptor_CenteredVES_InternalAttestationSending);
-};
+        request,
+        metadata || {},
+        methodDescriptor_CenteredVES_InternalAttestationSending);
+    };
 
 
 /**
@@ -1129,15 +1130,15 @@ proto.uiprpc.CenteredVESPromiseClient.prototype.internalAttestationSending =
  *   !proto.uiprpc.InternalCloseSessionReply>}
  */
 const methodDescriptor_CenteredVES_InternalCloseSession = new grpc.web.MethodDescriptor(
-  '/uiprpc.CenteredVES/InternalCloseSession',
-  grpc.web.MethodType.UNARY,
-  proto.uiprpc.InternalCloseSessionRequest,
-  proto.uiprpc.InternalCloseSessionReply,
-  /** @param {!proto.uiprpc.InternalCloseSessionRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.InternalCloseSessionReply.deserializeBinary
+    '/uiprpc.CenteredVES/InternalCloseSession',
+    grpc.web.MethodType.UNARY,
+    proto.uiprpc.InternalCloseSessionRequest,
+    proto.uiprpc.InternalCloseSessionReply,
+    /** @param {!proto.uiprpc.InternalCloseSessionRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.InternalCloseSessionReply.deserializeBinary
 );
 
 
@@ -1148,12 +1149,12 @@ const methodDescriptor_CenteredVES_InternalCloseSession = new grpc.web.MethodDes
  *   !proto.uiprpc.InternalCloseSessionReply>}
  */
 const methodInfo_CenteredVES_InternalCloseSession = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.uiprpc.InternalCloseSessionReply,
-  /** @param {!proto.uiprpc.InternalCloseSessionRequest} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.uiprpc.InternalCloseSessionReply.deserializeBinary
+    proto.uiprpc.InternalCloseSessionReply,
+    /** @param {!proto.uiprpc.InternalCloseSessionRequest} request */
+    function(request) {
+        return request.serializeBinary();
+    },
+    proto.uiprpc.InternalCloseSessionReply.deserializeBinary
 );
 
 
@@ -1169,13 +1170,13 @@ const methodInfo_CenteredVES_InternalCloseSession = new grpc.web.AbstractClientB
  */
 proto.uiprpc.CenteredVESClient.prototype.internalCloseSession =
     function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
+        return this.client_.rpcCall(this.hostname_ +
       '/uiprpc.CenteredVES/InternalCloseSession',
-      request,
-      metadata || {},
-      methodDescriptor_CenteredVES_InternalCloseSession,
-      callback);
-};
+        request,
+        metadata || {},
+        methodDescriptor_CenteredVES_InternalCloseSession,
+        callback);
+    };
 
 
 /**
@@ -1188,12 +1189,12 @@ proto.uiprpc.CenteredVESClient.prototype.internalCloseSession =
  */
 proto.uiprpc.CenteredVESPromiseClient.prototype.internalCloseSession =
     function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
+        return this.client_.unaryCall(this.hostname_ +
       '/uiprpc.CenteredVES/InternalCloseSession',
-      request,
-      metadata || {},
-      methodDescriptor_CenteredVES_InternalCloseSession);
-};
+        request,
+        metadata || {},
+        methodDescriptor_CenteredVES_InternalCloseSession);
+    };
 
 
 module.exports = proto.uiprpc;

@@ -27,6 +27,7 @@
 <script>
 import loader from './Markdown.vue';
 import elliptic from '@module/crypto/elliptic.js';
+import vclient from '@module/net/ves-client.js';
 import _ from 'lodash';
 
 export default {
@@ -111,6 +112,7 @@ export default {
         window.console.log(this.input_list);
 
         window.elliptic = elliptic;
+        window.vclient = vclient;
 
         // this.axios.get('https://myriaddreamin.com:10777/api/musical').then((response) =>  {
         //     this.recommend_list = response.data;
