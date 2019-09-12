@@ -19,6 +19,10 @@ export default {
                     'linker': '/console',
                     'text': 'Console',
                     'type': 0,
+                },{
+                    'linker': '/viewable',
+                    'text': 'View Edit',
+                    'type': 0,
                 }
             ]
         };

@@ -12,6 +12,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'Navibar',
     methods: {
@@ -21,11 +22,17 @@ export default {
 
 
             if (refer.type == 0) {
-                this.$router.push(refer.linker);
+                this.$router.push(refer.linker).catch(err => {
+                    if (err.name === "NavigationDuplicated") {
+                        return
+                    }
+                    console.log(err);
+                });
             } else {
                 window.location.href = refer.linker;
             }
-        }
+        },
+        extractName(c) {return Object.prototype.toString.call(c)},
     },
     props: ['refers']
 };

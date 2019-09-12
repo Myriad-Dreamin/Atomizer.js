@@ -13,6 +13,10 @@ export default new Router({
             path: '/console',
             name: 'console',
             component: require('@views/Show').default
+        },{
+            path: '/viewable',
+            name: 'view-edit',
+            component: require('@views/ViewEdit').default
         },
         {
             path: '*',

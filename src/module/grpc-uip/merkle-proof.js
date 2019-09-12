@@ -79,3 +79,6 @@ export default {
     MerkleProof,
 };
 
+
+export {MerkleProof};
+

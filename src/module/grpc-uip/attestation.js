@@ -81,3 +81,5 @@ class Attestation {
 export default {
     Attestation,
 };
+
+export {Attestation};

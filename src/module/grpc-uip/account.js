@@ -41,3 +41,4 @@ export default {
     Account,
 };
 
+export {Account};

@@ -35,3 +35,9 @@ class OpIntents {
         return this.Attestation.getSignatures();
     }
 }
+
+export default {
+    OpIntents,
+};
+
+export {OpIntents};

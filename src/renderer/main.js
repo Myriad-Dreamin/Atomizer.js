@@ -76,6 +76,7 @@ import {
     Notification
 } from 'element-ui';
 
+Vue.use(ElementUI);
 Vue.use(Pagination);
 Vue.use(Transfer);
 Vue.use(Dialog);
