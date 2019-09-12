@@ -4,10 +4,12 @@ import { SignaturesList } from './signature';
 import BaseRpc from '@net-grpc/lib/base_pb';
 
 class Attestation {
-    constructor(chain_id, address) {
+    constructor(tid, aid, content, signatures) {
         this.attestation = new BaseRpc.Attestation();
-        this.setChainId(chain_id);
-        this.setAddress(address);
+        this.setChainId(tid);
+        this.setAddress(aid);
+        this.setContent(content);
+        this.setSignatures(signatures);
     }   
 
     setTid(tid) {
@@ -74,6 +76,7 @@ class Attestation {
         return this.Attestation.getSignatures();
     }
 }
+
 
 export default {
     Attestation,
