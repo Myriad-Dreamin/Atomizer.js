@@ -21,7 +21,8 @@ class SubDB {
     }
 
     concat_path(key) {
-        return this.path + '.' + key;
+        if (key) return this.path + '.' + key;
+        return this.path;
     }
 
     dir_path() {
@@ -68,9 +69,34 @@ class KeyDB {
     }
     init() {
         if(!this.db.has().value()) {
-            this.db.set({}).write();
+            this.db.set([]).write();
         }
     }
+
+    get() {
+        return this.db.get().value();
+    }
+
+    set(value) {
+        return this.db.set(value).write();
+    }
+
+    update(accountList) {
+        this.db.update((o)=>{
+            o = o || [];
+            for (let account of accountList) {
+                let index = db._.findIndex(o, {chainID: account.chainID});
+                if(index == -1) {
+                    o.push(account);
+                } else {
+                    o[index] = account;
+                }
+            }
+            return o;
+        }).write();
+        return null;
+    }
+
 }
 
 class PubKeyDB {
@@ -88,11 +114,13 @@ class PubKeyDB {
         this.db.update((o)=>{
             o = o || [];
             for (let address of addressList) {
-                if(!db._.find(o, address)) {
+                let index = db._.findIndex(o, {address: address.address, chainID: address.chainID});
+                if(index == -1) {
                     o.push(address);
+                } else {
+                    o[index] = address;
                 }
             }
-            window.console.log('...', o);
             return o;
         }).write();
         return null;
@@ -105,19 +133,23 @@ class UserDB {
     }
     login(name) {
         this.db = this.db.apply(name);
-        this.eth = new KeyDB(this.db.apply('keys.eth'));
-        this.tem = new KeyDB(this.db.apply('keys.tem'));
+        this.name = name;
+        this.keys = new KeyDB(this.db.apply('keys'));
         this.contact = new PubKeyDB(this.db.apply('contact'));
     }
     logout() {
         this.db = this.db.release();
-        this.eth = null;
-        this.tem = null;
+        this.name = undefined;
+        this.keys = null;
         this.contact = null;
     }
 
     updateContact(addressList) {
         return this.contact.updateContact(addressList);
+    }
+
+    updateKeys(accountList) {
+        return this.keys.update(accountList);
     }
 }
 

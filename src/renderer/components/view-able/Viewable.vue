@@ -17,6 +17,13 @@
         </transition>
     </el-tab-pane>
 
+    <el-tab-pane name="self-account-edit">
+        <span slot="label"><i class="el-icon-edit-outline"></i>&nbsp;My Accounts</span>
+        <transition name="el-fade-in-linear">
+            <self-account-edit  ref="self-account-edit"/>
+        </transition>
+    </el-tab-pane>
+
     <el-tab-pane name="session-edit">
         <span slot="label"><i class="el-icon-message"></i>&nbsp;Session</span>
         <transition name="el-fade-in-linear">
@@ -33,6 +40,7 @@
 
 import OpIntentsEdit from './OpIntentsEdit';
 import AddressEdit from './AddressEdit';
+import SelfAccountEdit from './SelfAccountEdit';
 
 
 export default {
@@ -40,10 +48,11 @@ export default {
     components: {
         OpIntentsEdit,
         AddressEdit,
+        SelfAccountEdit,
     },
     data() {
       return {
-        activeName: 'address-edit'
+        activeName: 'self-account-edit'
       };
     },
     methods: {

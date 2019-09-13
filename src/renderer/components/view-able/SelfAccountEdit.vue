@@ -4,7 +4,7 @@
     <div class="content">
         
         <div>
-            <el-button style="float: right; margin: 20px 40px 20px 20px;" @click="addAddress">添加Address</el-button>
+            <el-button style="float: right; margin: 20px 40px 20px 20px;" @click="addAccount">添加Account</el-button>
             <div class="hidden-select">
                 <el-upload
                 ref="upload"
@@ -18,34 +18,25 @@
             <el-button style="float: right; margin: 20px;" @click="saveToDB">保存</el-button>
             <div class="clearfix"></div>
         </div>
-        <el-card :v-model="addresses" class="box-card" v-for="(address, index) in addresses" v-bind:key="index">
+        <el-card :v-model="accounts" class="box-card" v-for="(account, index) in accounts" v-bind:key="index">
             <div slot="header" class="clearfix">
-                <span>Addresses</span>
-                <el-button style="float: right; padding: 3px 0" type="text" @click="delAddress(index)">删除</el-button>
+                <span>Account</span>
+                <el-button style="float: right; padding: 3px 0" type="text" @click="delaccount(index)">删除</el-button>
             </div>
-            <el-form class="address-body" :model="address"
+            <el-form class="account-body" :model="account"
                 :rules="{
-                    name: [
-                        {validator: nameValidator, trigger: 'blur,change'},
-                    ],
                     chainID: [
                         {validator: chainIDValidator, trigger: 'blur,change'},
                     ],
-                    address: [
-                        {validator: addressValidator, trigger: 'blur,change'},
+                    privateKey: [
+                        {validator: privateKeyValidator, trigger: 'blur,change'},
                     ]
                 }"
             >
                 <el-row>
-                    <el-col :span="8">
-                        <el-form-item prop="name">
-                            <el-input class="contact" v-model="address.name" placeholder="Name"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="2">&nbsp;</el-col>
-                    <el-col :span="6">
+                    <el-col :span="11">
                         <el-form-item prop="chainID">
-                            <el-select class="addr-sel" v-model="address.chainID" placeholder="ChainID">
+                            <el-select class="addr-sel" v-model="account.chainID" placeholder="ChainID">
                                 <el-option
                                 v-for="item in chainIDs"
                                 :key="item.value"
@@ -58,9 +49,9 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="2">&nbsp;</el-col>
-                    <el-col :span="6">
-                    <el-form-item prop="address">
-                        <el-input class="contact" v-model="address.address" placeholder="Address"></el-input>
+                    <el-col :span="11">
+                    <el-form-item prop="privateKey">
+                        <el-input class="contact" v-model="account.privateKey" placeholder="Private Key"></el-input>
                     </el-form-item>
                     </el-col>
                 </el-row>
@@ -70,14 +61,12 @@
     </div>
 </template>
 
-
 <script>
-
 import { myriad } from '@module/global';
 
 
 export default {
-    name: 'AddressEdit',
+    name: 'SelfAccountEdit',
     data() {
       return {
         chainIDs: [{
@@ -93,9 +82,8 @@ export default {
             value: 4,
             label: 'Tendermint Chain1'
         }],
-        addresses: [{
-            name: '',
-            address: '',
+        accounts: [{
+            account: '',
             chainID: '',
         }],
       }
@@ -104,13 +92,6 @@ export default {
         this.onMounted();
     },
     methods: {
-        nameValidator(rule, value, callback) {
-            if (value === '') {
-                callback(new Error('name is required'));
-            } else {
-                callback();
-            }
-        },
         chainIDValidator(rule, value, callback) {
             if (value === '') {
                 callback(new Error('chainID is required'));
@@ -118,9 +99,9 @@ export default {
                 callback();
             }
         },
-        addressValidator(rule, value, callback) {
+        privateKeyValidator(rule, value, callback) {
             if (value === '') {
-                callback(new Error('address is required'));
+                callback(new Error('private Key is required'));
             } else {
                 callback();
             }
@@ -128,28 +109,27 @@ export default {
         handleClick(tab, event) {
             console.log(tab, event);
         },
-        addAddress() {
-            this.addresses.push({
-                name: '',
-                address: '',
+        addAccount() {
+            this.accounts.push({
+                privateKey: '',
                 chainID: '',
             });
         },
-        delAddress(index) {
-            this.addresses.splice(index, 1);
+        delaccount(index) {
+            this.accounts.splice(index, 1);
         },
-        setAddressListFromObject(objs) {
+        setaccountListFromObject(objs) {
             if (objs instanceof Array) {
-                this.addresses = objs;
+                this.accounts = objs;
             } else {
-                this.addresses = [objs];
+                this.accounts = [objs];
             }
         },
         boot(file) {
             var reader = new FileReader();
             var farthis = this;
             reader.onload = function() {
-                farthis.setAddressListFromObject(JSON.parse(this.result));
+                farthis.setaccountListFromObject(JSON.parse(this.result));
             }
             reader.readAsText(file);
         },
@@ -186,18 +166,13 @@ export default {
             let cb = (e) => {
                 err = e
             }
-            for (let address of this.addresses) {
-                this.nameValidator(null, address.name, cb);
+            for (let account of this.accounts) {
+                this.chainIDValidator(null, account.chainID, cb);
                 if (err != null) {
                     alert(err);
                     return
                 }
-                this.chainIDValidator(null, address.chainID, cb);
-                if (err != null) {
-                    alert(err);
-                    return
-                }
-                this.addressValidator(null, address.address, cb);
+                this.privateKeyValidator(null, account.privateKey, cb);
                 if (err != null) {
                     alert(err);
                     return
@@ -206,14 +181,13 @@ export default {
 
             var userdb = myriad.userdb
             console.log("QAQ");
-            var err = userdb.updateContact(this.addresses)
+            var err = userdb.updateKeys(this.accounts)
             if (err) {
                 alert(err);
                 return;
             }
-            this.addresses = [{
-                name: '',
-                address: '',
+            this.accounts = [{
+                account: '',
                 chainID: '',
             }];
         }
@@ -243,7 +217,7 @@ export default {
     margin: 10px 0;
 }
 
-.address-body {
+.account-body {
     padding: 10px;
 }
 

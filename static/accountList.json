@@ -1,0 +1,22 @@
+[
+    {
+        "privateKey": "1234567812345678",
+        "chainID": 1
+    },
+    {
+        "privateKey": "123456781234567890",
+        "chainID": 2
+    },{
+        "privateKey": "1234567812345678",
+        "chainID": 3
+    },{
+        "privateKey": "12345678123456789012",
+        "chainID": 2
+    },{
+        "privateKey": "1234567812345678",
+        "chainID": 4
+    },{
+        "privateKey": "12345678123456789",
+        "chainID": 1
+    }
+]
