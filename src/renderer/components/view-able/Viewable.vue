@@ -1,28 +1,26 @@
 /*jshint esversion: 6 */
 
 <template>
-  <el-tabs class="view-able" v-model="activeName" @tab-click="handleClick">
+  <el-tabs class="view-able" v-model="activeName" :before-leave="onSwitch">
     
     <el-tab-pane name="op-intents-edit">
         <span slot="label"><i class="el-icon-document"></i>&nbsp;OpIntents</span>
         <transition name="el-fade-in-linear">
-            <op-intents-edit/>
+            <op-intents-edit  ref="op-intents-edit"/>
         </transition>
     </el-tab-pane>
 
-    <el-tab-pane>
+    <el-tab-pane name="address-edit">
         <span slot="label"><i class="el-icon-edit-outline"></i>&nbsp;Address</span>
         <transition name="el-fade-in-linear">
-            <div class="content">
-                b
-            </div>
+            <address-edit  ref="address-edit"/>
         </transition>
     </el-tab-pane>
 
-    <el-tab-pane>
+    <el-tab-pane name="session-edit">
         <span slot="label"><i class="el-icon-message"></i>&nbsp;Session</span>
         <transition name="el-fade-in-linear">
-            <div class="content">
+            <div class="content"  ref="session-edit">
                 c
             </div>
         </transition>
@@ -34,21 +32,35 @@
 <script>
 
 import OpIntentsEdit from './OpIntentsEdit';
+import AddressEdit from './AddressEdit';
+
 
 export default {
     name: 'Viewable',
     components: {
         OpIntentsEdit,
+        AddressEdit,
     },
     data() {
       return {
-        activeName: 'op-intents-edit'
+        activeName: 'address-edit'
       };
     },
     methods: {
-      handleClick(tab, event) {
-        console.log(tab, event);
-      }
+        onSwitch(newTab, oldTab) {
+            var switchout = this.$refs[oldTab].onLeave;
+            if (switchout) {
+                switchout();
+            } else {
+                console.log("QAQ");
+            }
+            var swichin = this.$refs[newTab].onMounted;
+            if (swichin) {
+                swichin();
+            } else {
+                console.log("QAQ");
+            }
+        }
     },
 };
 </script>
