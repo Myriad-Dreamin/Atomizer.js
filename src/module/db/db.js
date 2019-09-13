@@ -1,4 +1,7 @@
 
+import { fromKeyPair } from '@module/crypto/account';
+
+
 import low from 'lowdb';
 import FileSync from 'lowdb/adapters/FileSync';
 
@@ -13,11 +16,10 @@ const db = low(adapter);
 //     },
 // }, count: 0 }).write();
 
-window.globadb = db;
-
 class SubDB {
     constructor(path) {
-        this.path = path;
+        if(path)this.path = path;
+        else this.path = '';
     }
 
     concat_path(key) {
@@ -41,7 +43,7 @@ class SubDB {
     }
 
     get(key) {
-        return db.get(this.concat_path(key?this.concat_path(key):this.path));
+        return db.get(key?this.concat_path(key):this.path);
     }
 
     set(value, key) {
@@ -85,6 +87,9 @@ class KeyDB {
         this.db.update((o)=>{
             o = o || [];
             for (let account of accountList) {
+
+                account.publicKey = fromKeyPair(account).public().hex();
+
                 let index = db._.findIndex(o, {chainID: account.chainID});
                 if(index == -1) {
                     o.push(account);
@@ -110,6 +115,14 @@ class PubKeyDB {
         }
     }
 
+    get() {
+        return this.db.get().value();
+    }
+
+    set(value) {
+        return this.db.set(value).write();
+    }
+
     updateContact(addressList) {
         this.db.update((o)=>{
             o = o || [];
@@ -129,7 +142,7 @@ class PubKeyDB {
 
 class UserDB {
     constructor (local_db) {
-        this.db = local_db.apply('user');
+        this.db = local_db;
     }
     login(name) {
         this.db = this.db.apply(name);
@@ -151,13 +164,21 @@ class UserDB {
     updateKeys(accountList) {
         return this.keys.update(accountList);
     }
+
+    listKeys() {
+        return this.keys.get();
+    }
+    
+    listContacts() {
+        return this.contact.get();
+    }
+
 }
 
 
-var rt = new SubDB();
 export default {
     origin: db,
-    userdb: new UserDB(rt),
-    infodb: rt.apply('info'),
-    config: rt.apply('config'),
+    userdb: new UserDB(new SubDB('user')),
+    infodb: new SubDB('info'),
+    config: new SubDB('config'),
 };

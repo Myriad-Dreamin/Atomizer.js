@@ -126,7 +126,6 @@ export default {
 </script>
 
 <style>
-
 .view-able .content {
     color: #ffffff;
     font-size: 16px;

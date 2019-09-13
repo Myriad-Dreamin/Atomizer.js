@@ -91,6 +91,10 @@ class ECSDA {
         return new EllipticECSDAPrivateKey(this.ec.genKeyPair());
     }
 
+    fromPrivate(key) {
+        return new EllipticECSDAPrivateKey(this.ec.keyFromPrivate(key));
+    }
+
     sign(msg, key) {
         return new EllipticSignature(this.ec.sign(msg, key));
     }
@@ -111,6 +115,10 @@ class EDDSA {
 
     generate() {
         return new EllipticEDDSAPrivateKey(this.ed.keyFromSecret(crypto.randomBytes(64)));
+    }
+
+    fromPrivate(key) {
+        return new EllipticEDDSAPrivateKey(this.ed.keyFromSecret(key));
     }
 
     sign(msg, key) {

@@ -108,9 +108,6 @@ export default {
         }
     },
     mounted() {
-        window.console.log(this.input_list.length);
-        window.console.log(this.input_list);
-
         window.elliptic = elliptic;
         window.vclient = vclient;
 

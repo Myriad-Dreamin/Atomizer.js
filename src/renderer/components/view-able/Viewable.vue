@@ -32,6 +32,20 @@
             </div>
         </transition>
     </el-tab-pane>
+
+    <el-tab-pane name="list">
+        <span slot="label"><i class="el-icon-view"></i>&nbsp;List</span>
+        <transition name="el-fade-in-linear">
+            <list  ref="list"/>
+        </transition>
+    </el-tab-pane>
+
+    <el-tab-pane name="helper">
+        <span slot="label"><i class="el-icon-help"></i>&nbsp;Help</span>
+        <transition name="el-fade-in-linear">
+            <helper ref="helper"/>
+        </transition>
+    </el-tab-pane>
   </el-tabs>
 </template>
 
@@ -41,7 +55,8 @@
 import OpIntentsEdit from './OpIntentsEdit';
 import AddressEdit from './AddressEdit';
 import SelfAccountEdit from './SelfAccountEdit';
-
+import List from './List';
+import Helper from './Help';
 
 export default {
     name: 'Viewable',
@@ -49,10 +64,12 @@ export default {
         OpIntentsEdit,
         AddressEdit,
         SelfAccountEdit,
+        List,
+        Helper,
     },
     data() {
       return {
-        activeName: 'self-account-edit'
+        activeName: 'helper'
       };
     },
     methods: {
@@ -74,7 +91,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 div[class*="typeclass-"] > * {
   padding: 0.5em;
 }
