@@ -7,32 +7,56 @@ class OpIntents {
     
     constructor(contents, dependencies) {
         this.opintents = new BaseRpc.OpIntents();
-        this.setChainId(contents);
-        this.setAddress(dependencies);
+        this.setContent(contents);
+        this.setDepenedencies(dependencies);
     }
     
-    setSignatures(signatures) {
+    setContents(contents) {
 
-        if (!(signatures instanceof Array)) {
-            if (signatures[0] instanceof BytesList) {
-                this.Attestation.setSignaturesList(signatures.container);
+        if (!(contents instanceof Array)) {
+            if (contents[0] instanceof BytesList) {
+                this.opintents.setContentsList(contents.container);
             }
-            return 'signatures not valid';
+            return 'contents not valid';
         }
 
-        if (signatures.length == 0) {
-            this.Attestation.setSignaturesList(signatures);
+        if (contents.length == 0) {
+            this.opintents.setContentsList(contents);
         }
 
-        if(signatures[0] instanceof Uint8Array) {
-            this.Attestation.setSignaturesList(signatures);
+        if(contents[0] instanceof Uint8Array) {
+            this.opintents.setContentsList(contents);
         } else {
-            return 'signatures not valid';
+            return 'contents not valid';
         }
     }
 
-    getSignatures() {
-        return this.Attestation.getSignatures();
+    getContents() {
+        return this.opintents.getContents();
+    }
+
+    setDepenedencies(dependencies) {
+
+        if (!(dependencies instanceof Array)) {
+            if (dependencies[0] instanceof BytesList) {
+                this.opintents.setDepenedenciesList(dependencies.container);
+            }
+            return 'dependencies not valid';
+        }
+
+        if (dependencies.length == 0) {
+            this.opintents.setDepenedenciesList(dependencies);
+        }
+
+        if(dependencies[0] instanceof Uint8Array) {
+            this.opintents.setDepenedenciesList(dependencies);
+        } else {
+            return 'contents not valid';
+        }
+    }
+
+    getDepenedencies() {
+        return this.opintents.getDepenedencies();
     }
 }
 

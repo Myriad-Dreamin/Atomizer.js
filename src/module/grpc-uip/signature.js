@@ -1,35 +1,8 @@
 /*
 
-message OpIntents {
-    repeated bytes contents = 1;
-    repeated bytes dependencies = 2;
-}
-
-message Transaction {
-    uint64 chain_id = 1;
-    bytes src = 2;
-    bytes dst = 3;
-    bytes domain = 4;
-    bytes meta = 5;
-}
-
 message Signature {
     uint32 signature_type = 1;
     bytes content = 2;
-}
-
-message Attestation {
-    uint64 chain_id = 1;
-    bytes address = 2;
-}
-
-
-message MerkleProof {
-    uint64 merkleproof_type = 1;
-    // roothash is contented in proof
-    bytes proof = 2;
-    bytes key = 3;
-    bytes value = 4;
 }
 
 message ShortenMerkleProof {
@@ -40,3 +13,50 @@ message ShortenMerkleProof {
 }
 
 */
+
+
+import hexbytes from '@module/util/hexbytes';
+import BaseRpc from '@net-grpc/lib/base_pb';
+
+class Signature {
+    constructor(signature_type, content) {
+        this.signature = new BaseRpc.Signature();
+        this.setSignatureType(signature_type);
+        this.setContent(content);
+    }   
+
+    setSignatureType(signature_type) {
+        return this.signature.setSignatureType(signature_type);
+    }
+
+    setContent(content) {
+        if (typeof content === 'string') {
+            content = hexbytes.HexToBytes(content);
+            if (content === null) {
+                return false;
+            }
+        } 
+
+        return this.signature.setContent(content);
+    }
+
+    getSignatureType() {
+        return this.signature.getSignatureType();
+    }
+
+    getContent() {
+        return this.signature.getContent();
+    }
+
+    showContent() {
+        return hexbytes.BytesToHex(this.signature.getContent());
+    }
+}
+
+export default {
+    Signature,
+};
+
+export {Signature};
+
+

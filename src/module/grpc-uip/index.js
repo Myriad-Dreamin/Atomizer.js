@@ -1,9 +1,10 @@
 
 import { Account } from './account';
-import { Signature } from './signature';
 import { Attestation } from './attestation';
 import { MerkleProof } from './merkle-proof';
-
+import { Signature } from './signature';
+import { OpIntent } from './op-intents';
+import { Transaction } from './transaction';
 
 
 export default {
@@ -11,6 +12,8 @@ export default {
     Signature,
     Attestation,
     MerkleProof,
+    OpIntent,
+    Transaction,
 };
 
 

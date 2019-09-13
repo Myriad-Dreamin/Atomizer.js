@@ -6,8 +6,8 @@ import BaseRpc from '@net-grpc/lib/base_pb';
 class Attestation {
     constructor(tid, aid, content, signatures) {
         this.attestation = new BaseRpc.Attestation();
-        this.setChainId(tid);
-        this.setAddress(aid);
+        this.setTid(tid);
+        this.setAid(aid);
         this.setContent(content);
         this.setSignatures(signatures);
     }   

@@ -3,10 +3,12 @@ import hexbytes from '@module/util/hexbytes';
 import BaseRpc from '@net-grpc/lib/base_pb';
 
 class MerkleProof {
-    constructor(chain_id, address) {
+    constructor(merkleproof_type, proof, key, value) {
         this.account = new BaseRpc.Account();
-        this.setChainId(chain_id);
-        this.setAddress(address);
+        this.setMerkleproofType(merkleproof_type);
+        this.setProof(proof);
+        this.setKey(key);
+        this.setValue(value);
     }   
 
     setMerkleproofType(merkleproof_type) {
