@@ -1,3 +1,4 @@
+/* eslint-disable */
 // source: wsrpc.proto
 /**
  * @fileoverview

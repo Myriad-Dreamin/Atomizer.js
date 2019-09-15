@@ -495,7 +495,7 @@ const methodInfo_VES_AttestationReceive = new grpc.web.AbstractClientBase.Method
 
 
 /**
- * @param {!proto.uiprpc.AttestationReceiveRequest} request The
+ * @param {string|proto.uiprpc.MerkleProofReceiveRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -717,7 +717,7 @@ const methodInfo_VES_InformAttestation = new grpc.web.AbstractClientBase.MethodI
 
 
 /**
- * @param {!proto.uiprpc.AttestationReceiveRequest} request The
+ * @param {string|proto.uiprpc.MerkleProofReceiveRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata

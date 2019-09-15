@@ -16,11 +16,11 @@ message ShortenMerkleProof {
 
 
 import hexbytes from '@module/util/hexbytes';
-import BaseRpc from '@net-grpc/lib/base_pb';
+import {proto} from '@net-grpc/lib/proto';
 
 class Signature {
     constructor(signature_type, content) {
-        this.signature = new BaseRpc.Signature();
+        this.signature = new proto.uiprpc.base.Signature();
         this.setSignatureType(signature_type);
         this.setContent(content);
     }   
@@ -52,11 +52,31 @@ class Signature {
         return hexbytes.BytesToHex(this.signature.getContent());
     }
 }
+// !Array<!proto.uiprpc.base.Signature>
+class SignatureList extends Array {
+    constructor() {
+        super();
+        for (const signature of arguments) {
+            if (signature instanceof Signature) {
+                this.push(signature);
+            }
+        }
+    }
+
+    addSignature(signature_type, content) {
+        this.push(new Signature(signature_type, content));
+    }
+
+
+
+}
+
 
 export default {
     Signature,
+    SignatureList,
 };
 
-export {Signature};
+export {Signature, SignatureList};
 
 

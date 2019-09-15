@@ -3,8 +3,7 @@
         "name": "alice",
         "address": "1234567812345678",
         "chainID": 1
-    },
-    {
+    },{
         "name": "alice",
         "address": "123456781234567890",
         "chainID": 1

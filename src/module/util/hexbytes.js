@@ -1,8 +1,6 @@
 
-
-
-var Utf8Encoder = new TextEncoder('utf-8');
-var Utf8Decoder = new TextDecoder('utf-8');
+const Utf8Encoder = new TextEncoder('utf-8');
+const Utf8Decoder = new TextDecoder('utf-8');
 
 const byteToHex = [];
 
@@ -13,6 +11,9 @@ for (let n = 0; n <= 0xff; ++n)
 }
 
 export default {
+    /**
+     * @return {string}
+     */
     BytesToString(arr) {
         return Utf8Decoder.decode(arr);
     },
@@ -38,6 +39,9 @@ export default {
     
     // const hexMapping = '0123456789abcdef';
 
+    /**
+     * @return {null | Uint8Array}
+     */
     HexToBytes(str) {
         var arr = [];
         let ofs = 0;
@@ -70,6 +74,9 @@ export default {
         }));
         return new Uint8Array(arr);
     },
+    /**
+     * @return {string}
+     */
     BytesToHex(arr) {
         const hexOctets = new Array(arr.length);
         for (let i = 0; i < arr.length; ++i)

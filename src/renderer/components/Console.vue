@@ -28,6 +28,8 @@
 import loader from './Markdown.vue';
 import elliptic from '@module/crypto/elliptic.js';
 import vclient from '@module/net/ves-client.js';
+import {proto} from '@net-grpc/lib/proto';
+import extended_proto from '@module/grpc-uip/index';
 import _ from 'lodash';
 
 export default {
@@ -39,7 +41,7 @@ export default {
         consoleDumpIt(){
             console.log("called");
             this.input_list.push('```javascript\n> '+this.input_load+'\n```\n');
-            var rv = this.evaluate(this.input_load);
+            const rv = this.evaluate(this.input_load);
             try {
                 let output = this.render(rv);
                 console.log(output);
@@ -50,12 +52,11 @@ export default {
             } catch(e) {
                 console.log(e);
                 this.output_list.push('\n');
-            };
-            
+            }
             this.input_load = '';
         },
         evaluate(code) {
-            var out = {};
+            let out = {};
             try {
                 out = eval.call(null, code);
             } catch (e) {
@@ -64,10 +65,10 @@ export default {
             return out;
         },
         render(value) {
-            var type = typeof value;
+            let type = typeof value;
             if (value instanceof Error) type = 'error';
             if (value === null) type = 'null';
-            var output = {
+            let output = {
                 value : value,
                 type : type,
                 class : 'typeclass-' + type
@@ -99,17 +100,19 @@ export default {
             return output;
         },
         htmlize(index, output) {
-            if (output.type === "object" || output.type == "array") {
+            if (output.type === "object" || output.type === "array") {
                 
                 return '<tree-view class="' + output.class + '" :theme="\'one-dark\'" :data="this.value_list['+ String(index) +']"/>';
             } else {
-                return '<div class="' + output.class + '"><p>' + output.formatted +'</p></div>';
+                return '<div class="' + output.class + '"><p/' + output.formatted + '></div>';
             }
         }
     },
     mounted() {
         window.elliptic = elliptic;
         window.vclient = vclient;
+        window.proto = proto;
+        window.extended_proto = extended_proto;
 
         // this.axios.get('https://myriaddreamin.com:10777/api/musical').then((response) =>  {
         //     this.recommend_list = response.data;

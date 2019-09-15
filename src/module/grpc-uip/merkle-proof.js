@@ -1,10 +1,10 @@
 
 import hexbytes from '@module/util/hexbytes';
-import BaseRpc from '@net-grpc/lib/base_pb';
+import {proto} from '@net-grpc/lib/proto';
 
 class MerkleProof {
     constructor(merkleproof_type, proof, key, value) {
-        this.account = new BaseRpc.Account();
+        this.merkleproof = new proto.uiprpc.base.MerkleProof();
         this.setMerkleproofType(merkleproof_type);
         this.setProof(proof);
         this.setKey(key);
@@ -12,7 +12,7 @@ class MerkleProof {
     }   
 
     setMerkleproofType(merkleproof_type) {
-        return this.account.setMerkleproofType(merkleproof_type);
+        return this.merkleproof.setMerkleproofType(merkleproof_type);
     }
 
     setProof(proof) {
@@ -23,7 +23,7 @@ class MerkleProof {
             }
         } 
 
-        return this.account.setAddress(proof);
+        return this.merkleproof.setProof(proof);
     }
 
     setKey(key) {
@@ -34,7 +34,7 @@ class MerkleProof {
             }
         } 
 
-        return this.account.setAddress(key);
+        return this.merkleproof.setKey(key);
     }
 
     setValue(value) {
@@ -45,35 +45,35 @@ class MerkleProof {
             }
         } 
 
-        return this.account.setAddress(value);
+        return this.merkleproof.setValue(value);
     }
 
     getMerkleproofType() {
-        return this.account.getMerkleproofType();
+        return this.merkleproof.getMerkleproofType();
     }
 
     getProof() {
-        return this.account.getProof();
+        return this.merkleproof.getProof();
     }
 
     showProof() {
-        return hexbytes.BytesToHex(this.account.getProof());
+        return hexbytes.BytesToHex(this.merkleproof.getProof());
     }
 
     getKey() {
-        return this.account.getKey();
+        return this.merkleproof.getKey();
     }
 
     showKey() {
-        return hexbytes.BytesToHex(this.account.getKey());
+        return hexbytes.BytesToHex(this.merkleproof.getKey());
     }
 
     getValue() {
-        return this.account.getValue();
+        return this.merkleproof.getValue();
     }
 
     showValue() {
-        return hexbytes.BytesToHex(this.account.getValue());
+        return hexbytes.BytesToHex(this.merkleproof.getValue());
     }
 }
 

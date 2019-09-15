@@ -1,11 +1,10 @@
 
 import hexbytes from '@module/util/hexbytes';
-import { SignaturesList } from './signature';
-import BaseRpc from '@net-grpc/lib/base_pb';
+import {proto} from '@net-grpc/lib/proto';
 
-class Attestation {
-    constructor(tid, aid, content, signatures) {
-        this.attestation = new BaseRpc.Attestation();
+class Attestation extends proto.uiprpc.base.Attestation {
+    constructor(tid, aid, content, signatures, opt_data) {
+        if(opt_data) super(opt_data); else super();
         this.setTid(tid);
         this.setAid(aid);
         this.setContent(content);
@@ -13,11 +12,11 @@ class Attestation {
     }   
 
     setTid(tid) {
-        return this.Attestation.setTid(tid);
+        return super.setTid(tid);
     }
 
     setAid(aid) {
-        return this.Attestation.setAid(aid);
+        return super.setAid(aid);
     }
 
     setContent(content) {
@@ -28,7 +27,7 @@ class Attestation {
             }
         } 
 
-        return this.Attestation.setContent(content);
+        return super.setContent(content);
     }
 
     setSignatures(signatures) {
@@ -37,43 +36,41 @@ class Attestation {
             return 'signatures not valid';
         }
 
-        if (signatures.length == 0) {
-            this.Attestation.setSignaturesList(signatures);
+        if (signatures.length === 0) {
+            super.setSignaturesList(signatures);
         }
 
-        if (signatures[0] instanceof SignaturesList) {
-            this.Attestation.setSignaturesList(signatures.signatures);
-        } else if(signatures[0] instanceof BaseRpc.Signature) {
-            this.Attestation.setSignaturesList(signatures);
+        if(signatures[0] instanceof proto.uiprpc.base.Signature) {
+            super.setSignaturesList(signatures);
         } else {
             return 'signatures not valid';
         }
     }
 
     getTid() {
-        return this.Attestation.getTid();
+        return super.getTid();
     }
 
     
     getAid() {
-        return this.Attestation.getAid();
+        return super.getAid();
     }
 
 
     getContent() {
-        return this.Attestation.getContent();
+        return super.getContent();
     }
 
     showContent() {
-        return hexbytes.BytesToHex(this.Attestation.getContent());
+        return hexbytes.BytesToHex(super.getContent());
     }
     
     showStringContent() {
-        return hexbytes.BytesToString(this.Attestation.getContent());
+        return hexbytes.BytesToString(super.getContent());
     }
 
     getSignatures() {
-        return this.Attestation.getSignatures();
+        return super.getSignatures();
     }
 }
 

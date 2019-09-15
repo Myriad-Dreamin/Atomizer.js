@@ -1,17 +1,13 @@
 
 import hexbytes from '@module/util/hexbytes';
-import BaseRpc from '@net-grpc/lib/base_pb';
+import {proto} from '@net-grpc/lib/proto';
 
-class Account {
-    constructor(chain_id, address) {
-        this.account = new BaseRpc.Account();
+class Account extends proto.uiprpc.base.Account {
+    constructor(chain_id, address, opt_data) {
+        if(opt_data) super(opt_data); else super();
         this.setChainId(chain_id);
         this.setAddress(address);
     }   
-
-    setChainId(chain_id) {
-        return this.account.setChainId(chain_id);
-    }
 
     setAddress(address) {
         if (typeof address === 'string') {
@@ -19,21 +15,20 @@ class Account {
             if (address === null) {
                 return false;
             }
-        } 
-
-        return this.account.setAddress(address);
+        }
+        return super.setAddress(address);
     }
 
     getChainId() {
-        return this.account.getChainId();
+        return super.getChainId();
     }
 
     getAddress() {
-        return this.account.getAddress();
+        return super.getAddress();
     }
 
     showAddress() {
-        return hexbytes.BytesToHex(this.account.getAddress());
+        return hexbytes.BytesToHex(super.getAddress());
     }
 }
 
