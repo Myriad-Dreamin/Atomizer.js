@@ -8,7 +8,7 @@
 
 
 import hexbytes from '@module/util/hexbytes';
-import {proto} from "@net-grpc/lib/proto";
+import {proto} from '@net-grpc/lib/proto';
 
 class Transaction extends proto.uiprpc.base.Transaction {
     constructor(chain_id, src, dst, domain, meta, opt_data) {
