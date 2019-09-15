@@ -1,6 +1,3 @@
-
-
-
 // message Transaction {
 //     uint64 chain_id = 1;
 //     bytes src = 2;
@@ -11,29 +8,25 @@
 
 
 import hexbytes from '@module/util/hexbytes';
-import BaseRpc from '@net-grpc/lib/base_pb';
+import {proto} from "@net-grpc/lib/proto";
 
-class Transaction {
-    constructor(chain_id, src, dst, domain, meta) {
-        this.transaction = new BaseRpc.Transaction();
+class Transaction extends proto.uiprpc.base.Transaction {
+    constructor(chain_id, src, dst, domain, meta, opt_data) {
+        super(opt_data);
         this.setChainId(chain_id);
         this.setSrc(src);
         this.setDst(dst);
         this.setDomain(domain);
         this.setMeta(meta);
-    }   
-
-    setChainId(chain_id) {
-        return this.transaction.setChainId(chain_id);
     }
 
     setSrc(src) {
         if (typeof src === 'string') {
             src = hexbytes.HexToBytes(src);
             if (src === null) {
-                return false;
+                return Error('convert error');
             }
-        } 
+        }
 
         return this.transaction.setSrc(src);
     }
@@ -42,9 +35,9 @@ class Transaction {
         if (typeof dst === 'string') {
             dst = hexbytes.HexToBytes(dst);
             if (dst === null) {
-                return false;
+                return Error('convert error');
             }
-        } 
+        }
 
         return this.transaction.setDst(dst);
     }
@@ -53,9 +46,9 @@ class Transaction {
         if (typeof domain === 'string') {
             domain = hexbytes.HexToBytes(domain);
             if (domain === null) {
-                return false;
+                return Error('convert error');
             }
-        } 
+        }
 
         return this.transaction.setDomain(domain);
     }
@@ -64,41 +57,23 @@ class Transaction {
         if (typeof meta === 'string') {
             meta = hexbytes.HexToBytes(meta);
             if (meta === null) {
-                return false;
+                return Error('convert error');
             }
-        } 
+        }
 
         return this.transaction.setMeta(meta);
-    }
-
-    getChainId() {
-        return this.transaction.getChainId();
-    }
-
-    getSrc() {
-        return this.transaction.getSrc();
     }
 
     showSrc() {
         return hexbytes.BytesToHex(this.transaction.getSrc());
     }
 
-    getDst() {
-        return this.transaction.getDst();
-    }
-
     showDst() {
         return hexbytes.BytesToHex(this.transaction.getDst());
-    }
-    getDomain() {
-        return this.transaction.getDomain();
     }
 
     shotDomain() {
         return hexbytes.BytesToHex(this.transaction.getDomain());
-    }
-    getMeta() {
-        return this.transaction.getMeta();
     }
 
     showMeta() {

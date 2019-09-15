@@ -1,20 +1,21 @@
 
 import hexbytes from './hexbytes';
 
-class BytesList {
+class BytesList extends Uint8Array {
     constructor(bytesList) {
-        this.container = new Uint8Array();
+        super();
         this.setBytesList(bytesList);
     }
 
     setBytesList(bytesList) {
-        for (let i = 0; i < bytesList.lengh; i++) {
+        this.splice(0);
+        for (let i = 0; i < bytesList.length; i++) {
             this.pushItem(bytesList[i]);
         }
     }
 
     getBytesList() {
-        return this.container;
+        return this;
     }
 
     push(bytesContent) {
@@ -29,15 +30,15 @@ class BytesList {
         if (typeof bytesContent === 'string') {
             bytesContent = hexbytes.HexToBytes(bytesContent);
             if (bytesContent === null) {
-                return false;
+                return Error('convert error');
             }
         } 
 
-        return this.container.push(bytesContent);
+        return super.push(bytesContent);
     }
 
     pushList(bytesList) {
-        for (let i = 0; i < bytesList.lengh; i++) {
+        for (let i = 0; i < bytesList.length; i++) {
             this.pushItem(bytesList[i]);
         }
     }
