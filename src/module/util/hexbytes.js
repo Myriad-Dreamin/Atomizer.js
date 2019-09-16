@@ -12,11 +12,24 @@ for (let n = 0; n <= 0xff; ++n)
 
 export default {
     /**
-     * @return {string}
+     * @Description:
+     * @author Myriad-Dreamin
+     * @param arr {Uint8Array}
+     * @returns {string}
+     * @constructor
      */
     BytesToString(arr) {
         return Utf8Decoder.decode(arr);
     },
+
+
+    /**
+     * @Description:
+     * @author Myriad-Dreamin
+     * @param str {string}
+     * @returns {Uint8Array}
+     * @constructor
+     */
     StringToBytes(str) {
         return Utf8Encoder.encode(str);
     },
@@ -40,6 +53,9 @@ export default {
     // const hexMapping = '0123456789abcdef';
 
     /**
+     * @Description:
+     * @author Myriad-Dreamin
+     * @param str {string}
      * @return {null | Uint8Array}
      */
     HexToBytes(str) {
@@ -75,6 +91,9 @@ export default {
         return new Uint8Array(arr);
     },
     /**
+     * @Description:
+     * @author Myriad-Dreamin
+     * @param arr {Uint8Array}
      * @return {string}
      */
     BytesToHex(arr) {

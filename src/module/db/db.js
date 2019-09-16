@@ -4,7 +4,7 @@ import { fromKeyPair } from '@module/crypto/account';
 
 import low from 'lowdb';
 import FileSync from 'lowdb/adapters/FileSync';
-
+// import {Session} from '@module/session/session';
 
 const adapter = new FileSync('./db.json');
 const db = low(adapter);
@@ -334,18 +334,40 @@ class SessionDB {
         this.db = local_db;
     }
 
-    push() {
-
+    /**
+     * @Description:
+     * @author Myriad-Dreamin
+     * @param session {Session}
+     */
+    push(session) {
+        this.db.update((o)=>{
+            o = o || [];
+            let obj = session.to_object();
+            let index = db._.findIndex(o, {isc_address: obj.isc_address});
+            if(index === -1) {
+                o.push(obj);
+            } else {
+                o[index] = obj;
+            }
+            return o;
+        }).write();
+        return null;
     }
 
-    find() {
-
+    /**
+     * @Description:
+     * @author Myriad-Dreamin
+     * @param condition {Array|Object} collection The collection to inspect.
+     * @param condition {Function} [predicate=_.identity] The function invoked per iteration.
+     * @param condition {number} [fromIndex=0] The index to search from.
+     * @returns {*} Returns the matched element, else `undefined`.
+     */
+    find(condition) {
+        return this.db.get().find(condition).value()
     }
 
     serve() {
-
     }
-
 }
 
 
