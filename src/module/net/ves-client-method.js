@@ -4,6 +4,8 @@ import { proto } from '@net-grpc/lib/proto';
 /*
 
 var account = new extended_proto.Account(); account.setChainId(1); account.getChainId(); account.setAddress("123"); account.showAddress();
+var orz = s.Serial(1, account);
+orz instanceof Uint8Array;
 
 instanceof
 
@@ -44,6 +46,13 @@ function buildMerkleProofReceiveRequest(session_id, chain_id, merkleproof) {
 class Client {
     constructor(host) {
         this.client = new proto.uiprpc.VESClient(host, null, null);
+        this.host = host;
+        this.credentials = null;
+        this.options = null;
+    }
+
+    split({host, credentials, options}) {
+        return new proto.uiprpc.VESClient(host || this.host, credentials || this.credentials, options || this.options);
     }
 
     user_register(account, name) {
@@ -145,3 +154,5 @@ class Client {
 export default {
     Client : Client,
 };
+
+export {Client};

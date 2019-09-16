@@ -4466,6 +4466,11 @@ globule@^1.0.0:
     lodash "~4.17.10"
     minimatch "~3.0.2"
 
+google-closure-library@^20190909.0.0:
+  version "20190909.0.0"
+  resolved "https://registry.npm.taobao.org/google-closure-library/download/google-closure-library-20190909.0.0.tgz#84133a3da0b301beb392a8d0844f0b1c398b94f3"
+  integrity sha1-hBM6PaCzAb6zkqjQhE8LHDmLlPM=
+
 google-protobuf@^3.10.0-rc.1:
   version "3.10.0-rc.1"
   resolved "https://registry.npm.taobao.org/google-protobuf/download/google-protobuf-3.10.0-rc.1.tgz#801b5716241a0b93f12e72d722160e3e8cfaba9e"

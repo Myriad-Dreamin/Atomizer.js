@@ -30,6 +30,7 @@ import elliptic from '@module/crypto/elliptic.js';
 import vclient from '@module/net/ves-client.js';
 import {proto} from '@net-grpc/lib/proto';
 import extended_proto from '@module/grpc-uip/index';
+import wsclient from '@/websocket/wsrpc-client';
 import _ from 'lodash';
 
 export default {
@@ -104,7 +105,7 @@ export default {
                 
                 return '<tree-view class="' + output.class + '" :theme="\'one-dark\'" :data="this.value_list['+ String(index) +']"/>';
             } else {
-                return '<div class="' + output.class + '"><p/' + output.formatted + '></div>';
+                return '<div class="' + output.class + '"><p>' + output.formatted + '</p></div>';
             }
         }
     },

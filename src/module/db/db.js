@@ -147,7 +147,7 @@ class KeyDB {
     /**
      * @Description:
      * @author Myriad-Dreamin
-     * @returns {Array<Object,{privateKey, publicKey, chainID}>}
+     * @returns {Array<Object,{alias, privateKey, publicKey, chainID}>}
      */
     get() {
         return this.db.get().value();
@@ -156,7 +156,7 @@ class KeyDB {
     /**
      * @Description:
      * @author Myriad-Dreamin
-     * @param value {Array<Object,{privateKey, publicKey, chainID}>}
+     * @param value {Array<Object,{alias, privateKey, publicKey, chainID}>}
      * @returns {*}
      */
     set(value) {
@@ -166,7 +166,7 @@ class KeyDB {
     /**
      * @Description:
      * @author Myriad-Dreamin
-     * @param accountList {Array<Object,{privateKey, publicKey, chainID}>}
+     * @param accountList {Array<Object,{alias, privateKey, publicKey, chainID}>}
      * @returns { Error }
      */
     update(accountList) {
@@ -187,6 +187,17 @@ class KeyDB {
         return null;
     }
 
+    /**
+     * @Description:
+     * @author Myriad-Dreamin
+     * @param condition {Array|Object} collection The collection to inspect.
+     * @param condition {Function} [predicate=_.identity] The function invoked per iteration.
+     * @param condition {number} [fromIndex=0] The index to search from.
+     * @returns {*} Returns the matched element, else `undefined`.
+     */
+    find(condition) {
+        return this.db.get().find(condition).value();
+    }
 }
 
 class PubKeyDB {
@@ -298,7 +309,11 @@ class UserDB {
     /**
      * @Description:
      * @author Myriad-Dreamin
-     * @param accountList {Array<Object,{privateKey, publicKey, chainID}>}
+     * @param accountList {Array<Object,{alias, privateKey, publicKey, chainID}>}
+     * @param accountList[].alias {string}
+     * @param accountList[].privateKey {string}
+     * @param accountList[].publicKey {string}
+     * @param accountList[].chainID {number}
      * @returns {Error}
      */
     updateKeys(accountList) {
@@ -308,10 +323,83 @@ class UserDB {
     /**
      * @Description:
      * @author Myriad-Dreamin
-     * @returns {Array<Object, {privateKey, publicKey, chainID}>}
+     * @returns {Array<Object, {alias, privateKey, publicKey, chainID}>}
+     * @returns alias {string}
+     * @returns privateKey {string}
+     * @returns publicKey {string}
+     * @returns chainID {number}
      */
     listKeys() {
         return this.keys.get();
+    }
+
+    /**
+     * @Description:
+     * @author Myriad-Dreamin
+     * @param condition {Array|Object} collection The collection to inspect.
+     * @param condition {Function} [predicate=_.identity] The function invoked per iteration.
+     * @param condition {number} [fromIndex=0] The index to search from.
+     * @returns {Array<Object,{alias, privateKey, publicKey, chainID}>} Returns the matched element, else `undefined`.
+     * @returns alias {string}
+     * @returns privateKey {string}
+     * @returns publicKey {string}
+     * @returns chainID {number}
+     */
+    findKey(condition) {
+        return this.keys.find(condition);
+    }
+
+    /**
+     * @Description:
+     * @author Myriad-Dreamin
+     * @param alias {string}
+     * @returns alias {string}
+     * @returns privateKey {string}
+     * @returns publicKey {string}
+     * @returns chainID {number}
+     * @returns {Object,{alias, privateKey, publicKey, chainID}} Returns the matched element, else `undefined`.
+     */
+    findAlias(alias) {
+        return this.keys.find({alias});
+    }
+
+    /**
+     * @Description:
+     * @author Myriad-Dreamin
+     * @param chainID {number}
+     * @returns alias {string}
+     * @returns privateKey {string}
+     * @returns publicKey {string}
+     * @returns chainID {number}
+     * @returns {Object,{alias, privateKey, publicKey, chainID}} Returns the matched element, else `undefined`.
+     */
+    findChainID(chainID) {
+        return this.keys.find({chainID});
+    }
+
+    /**
+     * @Description:
+     * @author Myriad-Dreamin
+     * @param publicKey {string}
+     * @returns alias {string}
+     * @returns privateKey {string}
+     * @returns publicKey {string}
+     * @returns chainID {number}
+     * @returns {Object,{alias, privateKey, publicKey, chainID}} Returns the matched element, else `undefined`.
+     */
+    findpublicKey(publicKey) {
+        return this.keys.find({publicKey});
+    }
+
+    /**
+     * @Description:
+     * @author Myriad-Dreamin
+     * @param condition {Object} object The object to query.
+     * @param condition {Array|string} path The path to check.
+     * @returns {boolean} Returns `true` if `path` exists, else `false`.
+     */
+    hasKey(condition) {
+        return this.keys.get().has(condition).value();
     }
 
     /**
@@ -363,7 +451,7 @@ class SessionDB {
      * @returns {*} Returns the matched element, else `undefined`.
      */
     find(condition) {
-        return this.db.get().find(condition).value()
+        return this.db.get().find(condition).value();
     }
 
     serve() {

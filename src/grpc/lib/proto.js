@@ -6,9 +6,10 @@ import message_id from './message_id';
 const proto = {};
 
 proto.wsrpc = wsrpc_pb;
+proto.wsrpc.MessageID = message_id.MessageID;
+
 proto.uiprpc = uiprpc_grpc_web_pb;
 
-proto.MessageID = message_id.MessageID;
 
 export default {
     proto,
