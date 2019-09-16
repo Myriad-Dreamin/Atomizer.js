@@ -77,6 +77,7 @@ import hexbytes from '@module/util/hexbytes';
 /**
  * @description
  * @author Myriad-Dreamin
+ * @return {pre_message_middleware}
  */
 function PreMessageMiddleWare() {
     let self = (msg) => {return self.wrap(msg);};

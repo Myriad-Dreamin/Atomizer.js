@@ -145,6 +145,9 @@ class WSRPCClient {
 
     processMessage(msg) {
         window.console.log(msg);
+
+
+
     }
 }
 
