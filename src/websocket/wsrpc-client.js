@@ -45,31 +45,15 @@ class WSRPCUnserializer {
      */
     decodeIP(raw) {
         let qwq = BinaryDecoder.alloc(raw);
-        let a = qwq.readUint16();
-        if (qwq.getError()) {
+        try {
+            let a = qwq.readUint16();
+            let b = qwq.readUint16();
+            let c = qwq.readUint16();
+            let d = qwq.readUint16();
+            return a + '.' + b + '.' + c + '.' + d;
+        } finally {
             qwq.free();
-            return ;
         }
-
-        let b = qwq.readUint16();
-        if (qwq.getError()) {
-            qwq.free();
-            return ;
-        }
-
-        let c = qwq.readUint16();
-        if (qwq.getError()) {
-            qwq.free();
-            return ;
-        }
-
-        let d = qwq.readUint16();
-        if (qwq.getError()) {
-            qwq.free();
-            return ;
-        }
-
-        return a + '.' + b + '.' + c + '.' + d;
     }
 }
 const defaultWSRPCUnserializer = new WSRPCUnserializer();

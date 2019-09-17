@@ -47,7 +47,7 @@
 require('google-closure-library');
 const goog = global.goog;
 goog.require('goog.asserts');
-// const jspb = goog;
+import {BinaryDecoder} from '../binary-decoder/binary-decoder';
 
 const jspb = Object.create({BinaryConstants: {}});
 // jspb.BinaryConstants =

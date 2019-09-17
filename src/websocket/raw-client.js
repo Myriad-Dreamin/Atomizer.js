@@ -112,11 +112,11 @@ class WSClient extends WebSocket {
      *
      * @param on_string_message_receive {on_string_message_receive}
      * @param on_bytes_message_receive {on_bytes_message_receive}
-     * @param before_message {PreMessageMiddleWare}
+     * @param interceptors {PreMessageMiddleWare}
      // * @param after_message {suf_message_middleware}
      */
     constructor(host, {protocols, binaryType, onopen, onclose, onerror,
-        on_string_message_receive, on_bytes_message_receive, before_message}) {
+        on_string_message_receive, on_bytes_message_receive, interceptors}) {
         super(host, protocols);
 
         this.ws.binaryType = binaryType;
@@ -126,7 +126,7 @@ class WSClient extends WebSocket {
         this.onerror = onerror;
 
 
-        this.beforemessage = before_message || defaultMiddleWare;
+        this.interceptors = interceptors || defaultMiddleWare;
         // this.aftermessage = after_message;
         let self = this;
         if (on_string_message_receive != null || on_bytes_message_receive != null) {
@@ -152,7 +152,7 @@ class WSClient extends WebSocket {
      */
     onMessage(event) {
 
-        event.data = this.beforemessage(event.data);
+        event.data = this.interceptors(event.data);
 
         if (typeof event.data === String) {
             window.console.log('Received data string');
