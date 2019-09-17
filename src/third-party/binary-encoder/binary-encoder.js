@@ -171,7 +171,7 @@ class BinaryEncoder {
      * @param {number} value The integer to convert.
      */
     writeUnsignedVarint32(value) {
-        goog.asserts.assert(value == Math.floor(value));
+        goog.asserts.assert(value === Math.floor(value));
         goog.asserts.assert((value >= 0) &&
             (value < jspb.BinaryConstants.TWO_TO_32));
 
@@ -190,7 +190,7 @@ class BinaryEncoder {
      * @param {number} value The integer to convert.
      */
     writeSignedVarint32(value) {
-        goog.asserts.assert(value == Math.floor(value));
+        goog.asserts.assert(value === Math.floor(value));
         goog.asserts.assert((value >= -jspb.BinaryConstants.TWO_TO_31) &&
             (value < jspb.BinaryConstants.TWO_TO_31));
 
@@ -219,7 +219,7 @@ class BinaryEncoder {
      * @param {number} value The integer to convert.
      */
     writeUnsignedVarint64(value) {
-        goog.asserts.assert(value == Math.floor(value));
+        goog.asserts.assert(value === Math.floor(value));
         goog.asserts.assert((value >= 0) &&
             (value < jspb.BinaryConstants.TWO_TO_64));
         jspb.utils.splitInt64(value);
@@ -235,7 +235,7 @@ class BinaryEncoder {
      * @param {number} value The integer to convert.
      */
     writeSignedVarint64(value) {
-        goog.asserts.assert(value == Math.floor(value));
+        goog.asserts.assert(value === Math.floor(value));
         goog.asserts.assert((value >= -jspb.BinaryConstants.TWO_TO_63) &&
             (value < jspb.BinaryConstants.TWO_TO_63));
         jspb.utils.splitInt64(value);
@@ -250,7 +250,7 @@ class BinaryEncoder {
      * @param {number} value The integer to convert.
      */
     writeZigzagVarint32(value) {
-        goog.asserts.assert(value == Math.floor(value));
+        goog.asserts.assert(value === Math.floor(value));
         goog.asserts.assert((value >= -jspb.BinaryConstants.TWO_TO_31) &&
             (value < jspb.BinaryConstants.TWO_TO_31));
         this.writeUnsignedVarint32(((value << 1) ^ (value >> 31)) >>> 0);
@@ -264,7 +264,7 @@ class BinaryEncoder {
      * @param {number} value The integer to convert.
      */
     writeZigzagVarint64(value) {
-        goog.asserts.assert(value == Math.floor(value));
+        goog.asserts.assert(value === Math.floor(value));
         goog.asserts.assert((value >= -jspb.BinaryConstants.TWO_TO_63) &&
             (value < jspb.BinaryConstants.TWO_TO_63));
         jspb.utils.splitZigzag64(value);
@@ -305,7 +305,7 @@ class BinaryEncoder {
      * @param {number} value The value to write.
      */
     writeUint8(value) {
-        goog.asserts.assert(value == Math.floor(value));
+        goog.asserts.assert(value === Math.floor(value));
         goog.asserts.assert((value >= 0) && (value < 256));
         this.buffer_.push((value >>> 0) & 0xFF);
     }
@@ -317,7 +317,7 @@ class BinaryEncoder {
      * @param {number} value The value to write.
      */
     writeUint16(value) {
-        goog.asserts.assert(value == Math.floor(value));
+        goog.asserts.assert(value === Math.floor(value));
         goog.asserts.assert((value >= 0) && (value < 65536));
         this.buffer_.push((value >>> 0) & 0xFF);
         this.buffer_.push((value >>> 8) & 0xFF);
@@ -330,7 +330,7 @@ class BinaryEncoder {
      * @param {number} value The value to write.
      */
     writeUint32(value) {
-        goog.asserts.assert(value == Math.floor(value));
+        goog.asserts.assert(value === Math.floor(value));
         goog.asserts.assert((value >= 0) &&
             (value < jspb.BinaryConstants.TWO_TO_32));
         this.buffer_.push((value >>> 0) & 0xFF);
@@ -346,7 +346,7 @@ class BinaryEncoder {
      * @param {number} value The value to write.
      */
     writeUint64(value) {
-        goog.asserts.assert(value == Math.floor(value));
+        goog.asserts.assert(value === Math.floor(value));
         goog.asserts.assert((value >= 0) &&
             (value < jspb.BinaryConstants.TWO_TO_64));
         jspb.utils.splitUint64(value);
@@ -361,7 +361,7 @@ class BinaryEncoder {
      * @param {number} value The value to write.
      */
     writeInt8(value) {
-        goog.asserts.assert(value == Math.floor(value));
+        goog.asserts.assert(value === Math.floor(value));
         goog.asserts.assert((value >= -128) && (value < 128));
         this.buffer_.push((value >>> 0) & 0xFF);
     }
@@ -373,7 +373,7 @@ class BinaryEncoder {
      * @param {number} value The value to write.
      */
     writeInt16(value) {
-        goog.asserts.assert(value == Math.floor(value));
+        goog.asserts.assert(value === Math.floor(value));
         goog.asserts.assert((value >= -32768) && (value < 32768));
         this.buffer_.push((value >>> 0) & 0xFF);
         this.buffer_.push((value >>> 8) & 0xFF);
@@ -386,7 +386,7 @@ class BinaryEncoder {
      * @param {number} value The value to write.
      */
     writeInt32(value) {
-        goog.asserts.assert(value == Math.floor(value));
+        goog.asserts.assert(value === Math.floor(value));
         goog.asserts.assert((value >= -jspb.BinaryConstants.TWO_TO_31) &&
             (value < jspb.BinaryConstants.TWO_TO_31));
         this.buffer_.push((value >>> 0) & 0xFF);
@@ -402,7 +402,7 @@ class BinaryEncoder {
      * @param {number} value The value to write.
      */
     writeInt64(value) {
-        goog.asserts.assert(value == Math.floor(value));
+        goog.asserts.assert(value === Math.floor(value));
         goog.asserts.assert((value >= -jspb.BinaryConstants.TWO_TO_63) &&
             (value < jspb.BinaryConstants.TWO_TO_63));
         jspb.utils.splitInt64(value);
@@ -416,7 +416,7 @@ class BinaryEncoder {
      * @param {string} value The value to write.
      */
     writeInt64String(value) {
-        goog.asserts.assert(value == Math.floor(value));
+        goog.asserts.assert(value === Math.floor(value));
         goog.asserts.assert((+value >= -jspb.BinaryConstants.TWO_TO_63) &&
             (+value < jspb.BinaryConstants.TWO_TO_63));
         jspb.utils.splitHash64(jspb.utils.decimalStringToHash64(value));
@@ -472,7 +472,7 @@ class BinaryEncoder {
      * @param {number} value The value to write.
      */
     writeEnum(value) {
-        goog.asserts.assert(value == Math.floor(value));
+        goog.asserts.assert(value === Math.floor(value));
         goog.asserts.assert((value >= -jspb.BinaryConstants.TWO_TO_31) &&
             (value < jspb.BinaryConstants.TWO_TO_31));
         this.writeSignedVarint32(value);
