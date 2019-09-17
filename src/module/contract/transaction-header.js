@@ -7,7 +7,7 @@ goog.require('goog.crypt.base64');
 
 import BigInteger from 'bn';
 import hexbytes from '@module/util/hexbytes';
-import _ from 'lodash';
+// import _ from 'lodash';
 /*
 type TransactionHeader struct {
 	From            []byte        `json:"from"`
