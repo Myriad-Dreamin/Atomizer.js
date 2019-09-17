@@ -1,7 +1,8 @@
 import {Contract} from '@module/contract/contract';
 import hexbytes from '@module/util/hexbytes';
-import {TransactionHeader} from '@module/contract/transaction_header';
-import {BigInteger} from 'bn';
+import {TransactionHeader} from '@module/contract/transaction-header-v2';
+import BigInteger from 'bn';
+import {proto} from '@net-grpc/lib/proto';
 import crypto from 'crypto';
 import {TransactionType} from '@module/contract/transaction-type';
 
@@ -11,6 +12,13 @@ const goog = global.goog;
 goog.require('goog.crypt.base64');
 
 const encodeBytes = goog.crypt.base64.encodeByteArray;
+
+function ComposeFuncArgs(function_name, function_arguments) {
+    let fap = new proto.nsbrpc.FAPair();
+    fap.setFuncname(function_name);
+    fap.setArgs(function_arguments);
+    return fap.serializeBinary();
+}
 
 /**
  * @description
@@ -23,15 +31,15 @@ const encodeBytes = goog.crypt.base64.encodeByteArray;
  * @param signature {Uint8Array}
  * @returns {string}
  */
-function encodeArgsAction(iscAddress, tid, aid, stype, content, signature) {
-    return JSON.stringify({
+function encodeAddActionPacket(iscAddress, tid, aid, stype, content, signature) {
+    return ComposeFuncArgs('system.action@addAction', JSON.stringify({
         1: encodeBytes(iscAddress),
         2: tid,
         3: aid,
         4: stype,
         5: encodeBytes(content),
         6: signature(signature),
-    });
+    }));
 }
 
 /**
@@ -72,20 +80,20 @@ class SystemAction extends Contract {
      * @param signature {bytesLike}
      */
     addAction(signer, iscAddress, tid, aid, stype, content, signature) {
-        let args_action_packet = encodeArgsAction(
+        let add_action_packet = encodeAddActionPacket(
             fromBytesLike(iscAddress),
             tid, aid, stype,
             fromBytesLike(content),
             fromBytesLike(signature),
         );
         let transaction = new TransactionHeader();
-        transaction.from = signer.public().bytes();
-        transaction.to = null;
+        transaction.src = signer.public().bytes();
+        transaction.dst = null;
         transaction.value = 0;
         transaction.nonce = BigInteger.fromBuffer(crypto.randomBytes(32));
-        transaction.data = args_action_packet;
-        transaction.signature = signer.sign(transaction.serializeSignaturable());
-        return this.sendContractTx(TransactionType.SystemCall, 'system.action@addAction', transaction);
+        transaction.data = add_action_packet;
+        transaction.signature = signer.sign(transaction.serialize());
+        return this.sendContractTx(TransactionType.SystemCall, transaction.serialize());
     }
 
     addActions() {

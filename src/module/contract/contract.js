@@ -27,13 +27,11 @@ class Contract {
      * @Description:
      * @author Myriad-Dreamin
      * @param trans_type {!number}
-     * @param contract_name {!string}
      * @param body {!Uint8Array}
      */
-    sendContractTx(trans_type, contract_name, body) {
+    sendContractTx(trans_type, body) {
         let writer = new BinaryEncoder();
         writer.writeUint8(trans_type);
-        writer.writeString(contract_name);
         writer.writeBytes(body);
         return this.client.broadcastTxCommit('0x' + hexbytes.BytesToHex(writer.end()));
     }

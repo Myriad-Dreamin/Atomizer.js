@@ -1,4 +1,4 @@
-import {BinaryEncoder} from "@third-party/binary-encoder/binary-encoder";
+import {BinaryEncoder} from '@third-party/binary-encoder/binary-encoder';
 
 require('google-closure-library');
 
@@ -158,7 +158,7 @@ class TransactionHeader {
     }
 
     nonce_asString() {
-        return encodeBigInt(this._value);
+        return encodeBigInt(this._nonce);
     }
 
     get signature() {

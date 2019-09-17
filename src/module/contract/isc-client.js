@@ -1,6 +1,6 @@
 
 import {Contract} from '@module/contract/contract';
-import {TransactionHeader} from '@module/contract/transaction_header';
+import {TransactionHeader} from '@module/contract/transaction-header';
 
 /**
  *
