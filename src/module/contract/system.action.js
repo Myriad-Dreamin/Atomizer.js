@@ -1,6 +1,9 @@
 import {Contract} from '@module/contract/contract';
 import hexbytes from '@module/util/hexbytes';
 import {TransactionHeader} from '@module/contract/transaction_header';
+import {BigInteger} from 'bn';
+import crypto from 'crypto';
+import {TransactionType} from '@module/contract/transaction-type';
 
 require('google-closure-library');
 
@@ -75,16 +78,14 @@ class SystemAction extends Contract {
             fromBytesLike(content),
             fromBytesLike(signature),
         );
-        const todo = 1;
         let transaction = new TransactionHeader();
-        transaction.from = signer.public();
+        transaction.from = signer.public().bytes();
         transaction.to = null;
         transaction.value = 0;
-        transaction.nonce = 0; // todo;
+        transaction.nonce = BigInteger.fromBuffer(crypto.randomBytes(32));
         transaction.data = args_action_packet;
-        let sign = () => {}; // todo;
-        transaction.signature = sign(signer, transaction);
-        return this.sendContractTx(todo, 'system.action@addAction', transaction);
+        transaction.signature = signer.sign(transaction.serializeSignaturable());
+        return this.sendContractTx(TransactionType.SystemCall, 'system.action@addAction', transaction);
     }
 
     addActions() {

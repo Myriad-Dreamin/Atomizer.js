@@ -1,3 +1,4 @@
+import {BinaryEncoder} from "@third-party/binary-encoder/binary-encoder";
 
 require('google-closure-library');
 
@@ -29,6 +30,12 @@ function encodeBigInt(b) {
     return b?b.toString(10):null;
 }
 
+/**
+ * @Description:
+ * @author Myriad-Dreamin
+ * @deprecated this version of transaction header is for json,
+ * and the new branch of NSB is considering using protobuf to serialize transaction header
+ */
 class TransactionHeader {
     constructor({from, to, data, value, nonce, signature}) {
 
@@ -52,13 +59,13 @@ class TransactionHeader {
 
         /**
          * @description max acceptable value that can be paid
-         * @type {BN}
+         * @type {BigInteger}
          */
         this.value = value;
 
         /**
          * @description random number which avoid double spending attack
-         * @type {BN}
+         * @type {BigInteger}
          */
         this.nonce = nonce;
 
@@ -179,6 +186,16 @@ class TransactionHeader {
             nonce: this.nonce_asString(),
             signature: this.signature_asString(),
         };
+    }
+
+    serializeSignaturable() {
+        let writer = new BinaryEncoder();
+        writer.writeBytes(this._from);
+        writer.writeBytes(this._to);
+        writer.writeBytes(this._data);
+        writer.writeBytes(this._value.toByteArray());
+        writer.writeBytes(this._nonce.toByteArray());
+        return writer.end();
     }
 }
 
