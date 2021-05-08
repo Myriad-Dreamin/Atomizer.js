@@ -4451,10 +4451,10 @@ globule@^1.0.0:
     lodash "~4.17.10"
     minimatch "~3.0.2"
 
-google-closure-library@^20190909.0.0:
-  version "20190909.0.0"
-  resolved "https://registry.npm.taobao.org/google-closure-library/download/google-closure-library-20190909.0.0.tgz#84133a3da0b301beb392a8d0844f0b1c398b94f3"
-  integrity sha1-hBM6PaCzAb6zkqjQhE8LHDmLlPM=
+google-closure-library@^20200315.0.0:
+  version "20200315.0.0"
+  resolved "https://registry.nlark.com/google-closure-library/download/google-closure-library-20200315.0.0.tgz#e20769b4e5be77da053c2d3bb21effef70146702"
+  integrity sha1-4gdptOW+d9oFPC07sh7/73AUZwI=
 
 google-protobuf@^3.10.0-rc.1:
   version "3.10.0-rc.1"
