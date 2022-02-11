@@ -70,7 +70,7 @@
     "lodash.merge": "^4.6.2",
     "lowdb": "^1.0.0",
     "markdown-it": "^8.4.2",
-    "markdown-it-highlightjs": "^3.0.0",
+    "markdown-it-highlightjs": "^3.3.1",
     "markdown-it-katex": "^2.0.3",
     "markdown-it-texmath": "^0.5.5",
     "vue": "^2.5.16",
